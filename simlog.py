@@ -319,17 +319,29 @@ if __name__ == '__main__':
         template = random.choice(LOG_TEMPLATES[marca])
         now = datetime.now()
         data = {
-            'date': now.strftime('%Y-%m-%d'), 'time': now.strftime('%H:%M:%S'),
-            'src': random_ip(), 'dst': random_ip(), 'sport': random_port(), 'dport': random_port(),
-            'pid': random.randint(100,9999), 'user': random_user(), 'policy': random.randint(1,100),
-            'service': random_service(), 'event': random_event(), 'process': random_process(),
-            'command': random_command(), 'setting': random_setting(), 'value': random_value(),
-            'action': random.choice(['login','logout','config-change']), 'load': random_load(),
+            'date': now.strftime('%Y-%m-%d'),  # Fecha actual
+            'time': now.strftime('%H:%M:%S'),  # Hora actual
+            'src': random_ip(),                # Dirección IP de origen (campo general)
+            'src_ip': random_ip(),             # Dirección IP de origen (campo específico)
+            'dst': random_ip(),                # Dirección IP de destino
+            'sport': random_port(),            # Puerto de origen
+            'dport': random_port(),            # Puerto de destino
+            'pid': random.randint(100, 9999),  # ID de proceso aleatorio
+            'user': random_user(),             # Usuario aleatorio
+            'policy': random.randint(1, 100),  # Política aleatoria
+            'service': random_service(),       # Servicio aleatorio
+            'event': random_event(),           # Evento aleatorio
+            'process': random_process(),       # Proceso aleatorio
+            'command': random_command(),       # Comando aleatorio
+            'setting': random_setting(),       # Configuración aleatoria
+            'value': random_value(),           # Valor aleatorio
+            'action': random.choice(['login', 'logout', 'config-change']),  # Acción aleatoria
+            'load': random_load(),             # Carga promedio aleatoria
             # Extender según placeholders...
         }
-        log = template.format(**data)
-        sender.send(log)
-        mostrar_progreso(i+1, total_int)
-        time.sleep(intervalo)
+        log = template.format(**data)  # Formatear el log con los datos generados
+        sender.send(log)               # Enviar el log al servidor Syslog
+        mostrar_progreso(i + 1, total_int)  # Mostrar progreso
+        time.sleep(intervalo)          # Esperar el intervalo configurado
 
     print("\nSimulación completada.")
