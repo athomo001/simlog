@@ -1,5 +1,3 @@
-¡Claro! Aquí tienes una propuesta de README para tu proyecto `SimLog`, usando Markdown para que se vea bien en GitHub. He intentado mantener un tono descriptivo y útil, incorporando la información que me diste.
-
 ```markdown
 # 🪵 SimLog: Generador de Logs Syslog Simulados
 
@@ -101,8 +99,7 @@ El script comenzará a enviar los logs seleccionados al destino indicado. Puedes
 Por favor, siéntete libre de abrir un *Issue* para discutir cambios o un *Pull Request* con tus mejoras.
 
 ## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Puedes ver los detalles en el archivo `LICENSE` (***Nota:** Asegúrate de añadir un archivo LICENSE a tu repositorio, por ejemplo, [eligiendo la licencia MIT al crearlo o añadiéndolo manualmente](https://choosealicense.com/licenses/mit/)*).
+el ciclista sin licencia
 
 ---
 *README generado el domingo, 20 de abril de 2025.*
