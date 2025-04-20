@@ -3,8 +3,6 @@
 ```markdown
 # 🪵 SimLog: Generador de Logs Syslog Simulados
 
-[![Estado](https://img.shields.io/badge/estado-alpha-orange.svg)](https://shields.io/)
-
 Una herramienta simple en Python para generar y enviar logs simulados vía Syslog. Ideal para realizar pruebas de carga (EPS - Eventos Por Segundo) en sistemas de recolección de logs como Wazuh, QRadar, Splunk, ELK Stack, etc., o simplemente para poblar tu SIEM de laboratorio con datos de ejemplo.
 
 ## 🤔 ¿Por qué SimLog?
