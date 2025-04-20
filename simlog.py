@@ -56,37 +56,117 @@ LOG_TEMPLATES = {
         "<134>date={date} time={time} devname=FGT01 logid=\"{logid}\" msg='License expired'",
         "<134>date={date} time={time} devname=FGT01 logid=\"{logid}\" msg='License renewed'"
     ],
-    'Cisco ASA': [
-        "<189>{date} {time} %ASA-6-302013: Built outbound TCP connection for outside:{src}/{sport}",
-        "<189>{date} {time} %ASA-4-313005: No matching connection for ICMP error message from {src}",
-        "<189>{date} {time} %ASA-5-111008: User '{user}' executed 'show running-config'",
-        "<189>{date} {time} %ASA-6-302015: Built inbound UDP connection for inside:{src}/{sport} to {dst}/{dport}",
-        "<189>{date} {time} %ASA-6-302014: Teardown TCP connection for outside:{src}/{sport}",
-        "<189>{date} {time} %ASA-6-302016: Teardown UDP connection for inside:{src}/{sport}",
-        "<189>{date} {time} %ASA-5-713172: HTTP request from {src} to {dst}",
-        "<189>{date} {time} %ASA-4-313001: Denied ICMP type={type} from {src}",
-        "<189>{date} {time} %ASA-6-302020: Built outbound IPSEC SA for {tunnel}",
-        "<189>{date} {time} %ASA-6-302021: Teardown IPSEC SA for {tunnel}",
-        "<189>{date} {time} %ASA-4-305011: Incomplete header received",
-        "<189>{date} {time} %ASA-6-725001: SNMP trap: {trap}",
-        "<189>{date} {time} %ASA-5-713158: HTTP status {status} from {dst}",
-        "<189>{date} {time} %ASA-5-713165: FTP login success for {user}",
-        "<189>{date} {time} %ASA-4-713166: FTP login failure for {user}",
-        "<189>{date} {time} %ASA-6-605007: AAA user authentication success for {user}",
-        "<189>{date} {time} %ASA-4-605008: AAA user authentication failure for {user}",
-        "<189>{date} {time} %ASA-6-113019: DHCP lease allocated to {src}",
-        "<189>{date} {time} %ASA-4-113020: DHCP lease release from {src}",
-        "<189>{date} {time} %ASA-6-305015: Fragment received from {src}",
-        "<189>{date} {time} %ASA-7-713142: HTTP URL filter log: {url}",
-        "<189>{date} {time} %ASA-6-106100: Access-list {acl} permitted {protocol} from {src}/{sport} to {dst}/{dport}",
-        "<189>{date} {time} %ASA-4-106001: Access-list {acl} denied {protocol} from {src}/{sport} to {dst}/{dport}",
-        "<189>{date} {time} %ASA-3-710002: PIX operating correctly",
-        "<189>{date} {time} %ASA-6-713162: HTTP redirect to {url}",
-        "<189>{date} {time} %ASA-5-622001: Syslog logging enabled",
-        "<189>{date} {time} %ASA-5-622002: Syslog logging disabled",
-        "<189>{date} {time} %ASA-6-113010: DHCP request from {src}",
-        "<189>{date} {time} %ASA-6-408100: ASA platform event: {event}",
-        "<189>{date} {time} %ASA-6-305004: ICMP type={type} code={code} from {src}"
+    'Cisco': [
+        # Logs de configuración de Cisco IOS
+        "1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by {user} on vty{vty} ({src_ip})",
+        "1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by {user} ({src_ip})",
+        "1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by vty{vty} ({src_ip})",
+        "1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by {user}",
+        "1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console",
+
+        # Logs de IDS/IPS de Cisco IOS
+        "1348: {hostname}: {date} {time}: %IPS-4-SIGNATURE: Sig:{sig_id} Subsig:{subsig_id} Sev:{severity} {description} [{src_ip}:{src_port} -> {dst_ip}:{dst_port}]",
+        "1348: {hostname}: {date} {time}: %IPS-4-SIGNATURE: Sig:{sig_id} Subsig:{subsig_id} Sev:{severity} {description} [{src_ip}:{src_port} -> {dst_ip}:{dst_port}]",
+
+        # Logs de acceso denegado (IP Access List)
+        "1348: {hostname}: {date} {time}: %SEC-6-IPACCESSLOGP: list {acl} denied {protocol} {src_ip}({src_port}) -> {dst_ip}({dst_port}), {packet_count} packet(s)",
+        "1348: {hostname}: {date} {time}: %SEC-6-IPACCESSLOGP: list {acl} permitted {protocol} {src_ip}({src_port}) -> {dst_ip}({dst_port}), {packet_count} packet(s)",
+
+        # Logs de eventos de red
+        "1348: {hostname}: {date} {time}: %LINK-3-UPDOWN: Interface {interface}, changed state to up",
+        "1348: {hostname}: {date} {time}: %LINK-3-UPDOWN: Interface {interface}, changed state to down",
+        "1348: {hostname}: {date} {time}: %LINEPROTO-5-UPDOWN: Line protocol on Interface {interface}, changed state to up",
+        "1348: {hostname}: {date} {time}: %LINEPROTO-5-UPDOWN: Line protocol on Interface {interface}, changed state to down",
+
+        # Logs de eventos de sistema
+        "1348: {hostname}: {date} {time}: %SYS-5-RESTART: System restarted --",
+        "1348: {hostname}: {date} {time}: %SYS-5-RELOAD: Reload requested by {user} on vty{vty}.",
+        "1348: {hostname}: {date} {time}: %SYS-5-RELOAD: Reload initiated by {user}.",
+
+        # Logs de eventos de protocolos
+        "1348: {hostname}: {date} {time}: %BGP-5-ADJCHANGE: BGP neighbor {src_ip} changed state to Established",
+        "1348: {hostname}: {date} {time}: %BGP-5-ADJCHANGE: BGP neighbor {src_ip} changed state to Idle",
+        "1348: {hostname}: {date} {time}: %OSPF-5-ADJCHG: OSPF neighbor {src_ip} on interface {interface} changed state to FULL",
+        "1348: {hostname}: {date} {time}: %OSPF-5-ADJCHG: OSPF neighbor {src_ip} on interface {interface} changed state to DOWN",
+        "1348: {hostname}: {date} {time}: %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Active",
+        "1348: {hostname}: {date} {time}: %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Standby",
+        "1348: {hostname}: {date} {time}: %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Init",
+
+        # Logs de eventos de VLAN y spanning tree
+        "1348: {hostname}: {date} {time}: %VTP-5-VLANCREATE: VLAN {vlan_id} created",
+        "1348: {hostname}: {date} {time}: %VTP-5-VLANDELETE: VLAN {vlan_id} deleted",
+        "1348: {hostname}: {date} {time}: %VTP-5-VLANMODIFY: VLAN {vlan_id} modified",
+        "1348: {hostname}: {date} {time}: %STP-5-ROOTCHANGE: Spanning Tree Protocol root changed to {src_ip}",
+        "1348: {hostname}: {date} {time}: %STP-5-TOPOLOGYCHANGE: Spanning Tree Protocol topology change detected",
+
+        # Logs de eventos de DHCP y NTP
+        "1348: {hostname}: {date} {time}: %DHCPD-6-ADDRESS_ASSIGN: DHCP address {src_ip} assigned to client {mac_address}",
+        "1348: {hostname}: {date} {time}: %DHCPD-6-ADDRESS_RELEASE: DHCP address {src_ip} released by client {mac_address}",
+        "1348: {hostname}: {date} {time}: %NTP-5-SYNC: NTP synchronized to server {src_ip}",
+        "1348: {hostname}: {date} {time}: %NTP-5-UNSYNC: NTP unsynchronized from server {src_ip}",
+
+        # Logs de eventos de seguridad
+        "1348: {hostname}: {date} {time}: %SYS-5-PORTSECURITY: Port security violation detected on port {interface}",
+        "1348: {hostname}: {date} {time}: %CDP-4-NBRCHG: CDP neighbor {device} on port {interface} changed",
+     # Logs de Cisco FTD
+        "%FTD-3-710003: TCP access denied by ACL from {src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}",
+        "%FTD-4-106023: Deny tcp src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port} by access-group \"{access_group}\"",
+        "%FTD-6-106015: Deny TCP (no connection) from {src_ip}/{src_port} to {dst_ip}/{dst_port} flags {tcp_flags} on interface {interface}",
+        "%FTD-6-308001: console enable password incorrect for {attempts} tries (from {src_ip})",
+        "%FTD-6-605004: Login denied from {src_ip}/{src_port} to {interface}:{dst_ip}/{protocol} for user \"{user}\"",
+        "%FTD-6-605005: Login permitted from {src_ip}/{src_port} to {interface}:{dst_ip}/{protocol} for user \"{user}\"",
+        "%FTD-4-733100: Object drop rate {drop_rate} exceeded. Current burst rate is {burst_rate} per second, max configured rate is {max_burst_rate}; Current average rate is {avg_rate} per second, max configured rate is {max_avg_rate}; Cumulative total count is {total_count}",
+        "%FTD-5-111008: User '{user}' executed the '{command}' command.",
+        "%FTD-3-421001: UDP flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} is dropped because application has failed.",
+        "%FTD-3-421007: UDP flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} is skipped because application has failed.",
+        "%FTD-3-106014: Deny inbound icmp src {interface}:{src_ip} dst {interface}:{dst_ip} (type {icmp_type}, code {icmp_code})",
+        "%FTD-4-500004: Invalid transport field for protocol={protocol}, from {src_ip}/{src_port} to {dst_ip}/{dst_port}",
+        "%FTD-4-313009: Denied invalid ICMP code {icmp_code}, for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}, ICMP id {icmp_id}, ICMP type {icmp_type}",
+        "%FTD-4-209005: Discard IP fragment set with more than {fragment_count} elements: src = {src_ip}, dest = {dst_ip}, proto = {protocol}, id = {fragment_id}",
+        "%FTD-6-305012: Teardown dynamic TCP translation from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration}",
+        "%FTD-5-111010: User '{user}', running '{method}' from IP {src_ip}, executed '{command}'",
+        "%FTD-1-505015: Module {module}, application up \"{application}\", version \"{version}\" Normal Operation",
+        "%FTD-6-302014: Teardown TCP connection {connection_id} for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes}",
+        "%FTD-6-302016: Teardown UDP connection {connection_id} for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes}",
+        "%FTD-4-405001: Received ARP {arp_type} collision from {src_ip}/{mac_address} on interface {interface} to {dst_ip}/{mac_address} on interface {interface}",
+        "%FTD-2-106020: Deny IP teardrop fragment (size = {fragment_size}, offset = {fragment_offset}) from {src_ip} to {dst_ip}",
+        "%FTD-5-500003: Bad TCP hdr length (hdrlen={hdr_length}, pktlen={pkt_length}) from {src_ip}/{src_port} to {dst_ip}/{dst_port}, flags: {tcp_flags}, on interface {interface}",
+        "%FTD-3-202010: PAT pool exhausted. Unable to create TCP connection from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}",
+        "%FTD-1-105005: (Secondary) Lost Failover communications with mate on interface {interface}",
+        "%FTD-1-106101: The number of ACL log deny-flows has reached limit ({limit}).",
+        "%FTD-4-409023: Attempting AAA Fallback method {method} for Authentication request for user {user}: Auth-server group {auth_server_group} unreachable",
+        "%FTD-4-711004: Task ran for {duration} msec, Process = {process}, PC = {pc}, Call stack = {call_stack}",
+        "%FTD-4-411001: Line protocol on Interface {interface} changed state to {state}",
+        "%FTD-2-321006: System Memory usage reached {memory_usage}%",
+        "%FTD-4-405003: IP address collision detected between host {src_ip} at {src_mac} and interface {interface}, {dst_mac}",
+        "%FTD-4-500001: Invalid transport field for protocol={protocol}, from {src_ip}/{src_port} to {dst_ip}/{dst_port}",
+        "%FTD-4-500002: Invalid transport field for protocol={protocol}, from {src_ip}/{src_port} to {dst_ip}/{dst_port}",],
+    'Windows': [
+        "<189>{date} {time} %OSPF-5-ADJCHG: OSPF neighbor {src} on interface {interface} changed state to DOWN",
+        "<189>{date} {time} %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Active",
+        "<189>{date} {time} %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Standby",
+        "<189>{date} {time} %HSRP-5-STATECHANGE: HSRP group {group_id} state changed to Init",
+        "<189>{date} {time} %STP-5-ROOTCHANGE: Spanning Tree Protocol root changed to {src}",
+        "<189>{date} {time} %STP-5-TOPOLOGYCHANGE: Spanning Tree Protocol topology change detected",
+        "<189>{date} {time} %VTP-5-MODECHANGE: VTP mode changed to {mode}",
+        "<189>{date} {time} %VTP-5-DOMAINCHANGE: VTP domain changed to {domain}",
+        "<189>{date} {time} %VTP-5-VLANCREATE: VLAN {vlan_id} created",
+        "<189>{date} {time} %VTP-5-VLANDELETE: VLAN {vlan_id} deleted",
+        "<189>{date} {time} %VTP-5-VLANMODIFY: VLAN {vlan_id} modified",
+        "<189>{date} {time} %POE-5-POWER_GRANTED: Power granted to device on port {interface}",
+        "<189>{date} {time} %POE-5-POWER_REMOVED: Power removed from device on port {interface}",
+        "<189>{date} {time} %SYS-5-MOD_INSERT: Module {module_id} inserted",
+        "<189>{date} {time} %SYS-5-MOD_REMOVE: Module {module_id} removed",
+        "<189>{date} {time} %SYS-5-PORTSECURITY: Port security violation detected on port {interface}",
+        "<189>{date} {time} %SYS-5-CONFIG_SAVE: Configuration saved by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_LOAD: Configuration loaded by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_REVERT: Configuration reverted by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_BACKUP: Configuration backup created by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_RESTORE: Configuration restored by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_EXPORT: Configuration exported by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_IMPORT: Configuration imported by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_VERIFY: Configuration verified by {user}",
+        "<189>{date} {time} %SYS-5-CONFIG_VALIDATE: Configuration validated by {user}",
     ],
     'Windows': [
         "<134>EventID=4624; Inicio de sesión exitoso de {user} desde {src_ip}",
@@ -263,7 +343,62 @@ LOG_TEMPLATES = {
         "<134>EventID=7028; Conexión a red desconocida detectada por {user}",
         "<134>EventID=7029; Uso de herramienta de hacking detectado: {tool_name} por {user}",
         "<134>EventID=7030; Modificación de cron job: {job_name} por {user}",
-        ]
+        
+    ],
+    'MikroTik': [
+        "<134>date={date} time={time} MikroTik: User {user} logged in from {src_ip}",
+        "<134>date={date} time={time} MikroTik: User {user} logged out",
+        "<134>date={date} time={time} MikroTik: Interface {interface} went up",
+        "<134>date={date} time={time} MikroTik: Interface {interface} went down",
+        "<134>date={date} time={time} MikroTik: Firewall rule {rule_name} triggered for {src_ip} -> {dst_ip}",
+        "<134>date={date} time={time} MikroTik: DHCP lease assigned to {src_ip}",
+        "<134>date={date} time={time} MikroTik: DHCP lease released for {src_ip}",
+        "<134>date={date} time={time} MikroTik: NAT rule {rule_name} applied for {src_ip} -> {dst_ip}",
+        "<134>date={date} time={time} MikroTik: VPN connection {tunnel} established",
+        "<134>date={date} time={time} MikroTik: VPN connection {tunnel} disconnected",
+        "<134>date={date} time={time} MikroTik: High CPU usage detected: {cpu_usage}%",
+        "<134>date={date} time={time} MikroTik: High memory usage detected: {memory_usage}%",
+        "<134>date={date} time={time} MikroTik: System reboot initiated by {user}",
+        "<134>date={date} time={time} MikroTik: Firmware upgrade completed to version {version}",
+        "<134>date={date} time={time} MikroTik: Configuration backup created: {filename}",
+        "<134>date={date} time={time} MikroTik: Configuration restored from {filename}",
+        "<134>date={date} time={time} MikroTik: Suspicious login attempt from {src_ip}",
+        "<134>date={date} time={time} MikroTik: Port scan detected from {src_ip}",
+        "<134>date={date} time={time} MikroTik: Malicious traffic blocked from {src_ip}",
+        "<134>date={date} time={time} MikroTik: DNS request blocked for domain {domain}",
+    ],
+    'Huawei': [
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/SESSION_TEARDOWN(l): Session teardown. SrcIp={src_ip}, DstIp={dst_ip}, SrcPort={src_port}, DstPort={dst_port}, Protocol={protocol}, Action=Teardown",
+        "<134>date={date} time={time} USG6300 %%01URL/4/FILTER(l): The URL filtering policy was matched. SyslogId={logid}, SrcIp={src_ip}, DstIp={dst_ip}, SrcPort={src_port}, DstPort={dst_port}, Protocol={protocol}, Application={application}, Action={action}",
+        "<134>date={date} time={time} USG6300 %%01POLICY/6/POLICYPERMIT(l): Policy permit. SrcIp={src_ip}, DstIp={dst_ip}, SrcPort={src_port}, DstPort={dst_port}, Policy={policy}, Action=Permit",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/SESSION_SETUP(l): Session setup. SrcIp={src_ip}, DstIp={dst_ip}, SrcPort={src_port}, DstPort={dst_port}, Protocol={protocol}, Action=Setup",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/CPU_HIGH(l): High CPU usage detected. Usage={cpu_usage}%",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/MEMORY_HIGH(l): High memory usage detected. Usage={memory_usage}%",
+        "<134>date={date} time={time} USG6300 %%01SYSTEM/6/REBOOT(l): System reboot initiated by {user}",
+        "<134>date={date} time={time} USG6300 %%01FIRMWARE/6/UPGRADE_COMPLETED(l): Firmware upgrade completed. Version={version}",
+        "<134>date={date} time={time} USG6300 %%01CONFIG/6/BACKUP_CREATED(l): Configuration backup created. Filename={filename}",
+        "<134>date={date} time={time} USG6300 %%01CONFIG/6/RESTORE_COMPLETED(l): Configuration restored from {filename}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/SUSPICIOUS_LOGIN(l): Suspicious login attempt detected. SrcIp={src_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/PORT_SCAN(l): Port scan detected. SrcIp={src_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/MALICIOUS_TRAFFIC(l): Malicious traffic blocked. SrcIp={src_ip}",
+        "<134>date={date} time={time} USG6300 %%01DNS/6/REQUEST_BLOCKED(l): DNS request blocked. Domain={domain}",
+        # Nuevos logs de prueba
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/LOGIN_SUCCESS(l): User {user} logged in successfully from {src_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/LOGIN_FAILURE(l): Failed login attempt by {user} from {src_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/CONFIG_CHANGE(l): Configuration changed by {user}. Setting={setting}, Value={value}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/INTERFACE_DOWN(l): Interface {interface} went down",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/INTERFACE_UP(l): Interface {interface} is up",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/FIREWALL_RULE_HIT(l): Firewall rule {rule_name} triggered for SrcIp={src_ip}, DstIp={dst_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/THREAT_DETECTED(l): Threat detected: {threat_name}. SrcIp={src_ip}, DstIp={dst_ip}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/URL_BLOCKED(l): URL blocked: {url}. Category={category}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/SSL_CERT_EXPIRED(l): SSL certificate expired for domain {domain}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/SESSION_TIMEOUT(l): Session timeout for user {user}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/CONFIG_BACKUP(l): Configuration backup completed. Filename={filename}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/CONFIG_RESTORE(l): Configuration restored from backup. Filename={filename}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/DEVICE_REBOOT(l): Device rebooted by {user}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/DEVICE_SHUTDOWN(l): Device shutdown initiated by {user}",
+        "<134>date={date} time={time} USG6300 %%01SECLOG/6/DEVICE_STARTUP(l): Device startup completed",
+    ]
 }
 
 # Funciones auxiliares para datos aleatorios
@@ -608,6 +743,138 @@ def random_rule():
 def random_object():
     return random.choice(['Object1', 'Object2', 'Object3'])
 
+def random_tunnel():
+    return random.choice(['VPN1', 'VPN2', 'VPN3', 'VPN4'])
+
+def random_used():
+    return random.randint(1, 100)  # Porcentaje de memoria usada
+
+def random_hostname():
+    return random.choice(['router1', 'switch1', 'firewall1', 'core1', 'edge1'])
+
+def random_vty():
+    return random.randint(0, 10)
+
+def random_acl():
+    return random.choice(['AllowAll', 'DenyAll', 'CustomRule', 'DefaultRule'])
+
+def random_packet_count():
+    return random.randint(1, 1000)
+
+def random_sig_id():
+    return random.randint(1000, 9999)
+
+def random_subsig_id():
+    return random.randint(1, 10)
+
+def random_severity():
+    return random.choice(['low', 'medium', 'high', 'critical'])
+
+def random_description():
+    return random.choice(['Malware detected', 'Suspicious activity', 'Unauthorized access'])
+
+def random_tcp_flags():
+    return random.choice(['SYN', 'ACK', 'FIN', 'RST', 'PSH', 'URG'])
+
+def random_access_group():
+    return random.choice(['inside_inbound', 'outside_outbound', 'dmz_access'])
+
+def random_drop_rate():
+    return random.randint(1, 100)
+
+def random_burst_rate():
+    return random.randint(1, 50)
+
+def random_max_burst_rate():
+    return random.randint(50, 100)
+
+def random_avg_rate():
+    return random.randint(1, 50)
+
+def random_max_avg_rate():
+    return random.randint(50, 100)
+
+def random_total_count():
+    return random.randint(1000, 10000)
+
+def random_icmp_type():
+    return random.randint(0, 255)
+
+def random_icmp_code():
+    return random.randint(0, 255)
+
+def random_fragment_count():
+    return random.randint(1, 100)
+
+def random_fragment_id():
+    return random.randint(1000, 9999)
+
+def random_arp_type():
+    return random.choice(['request', 'response'])
+
+def random_src_mac():
+    return ':'.join(f"{random.randint(0, 255):02x}" for _ in range(6))
+
+def random_dst_mac():
+    return ':'.join(f"{random.randint(0, 255):02x}" for _ in range(6))
+
+def random_method():
+    return random.choice(['CLI', 'API', 'GUI'])
+
+def random_pc():
+    return hex(random.randint(0, 0xFFFFFF))
+
+def random_call_stack():
+    return ', '.join([hex(random.randint(0, 0xFFFFFF)) for _ in range(3)])
+
+def random_state():
+    return random.choice(['up', 'down', 'running', 'stopped'])
+
+def random_limit():
+    return random.randint(1, 1000)
+
+def random_icmp_id():
+    return random.randint(1, 65535)  # ID ICMP aleatorio
+
+def random_vlan_id():
+    return random.randint(1, 4094)  # ID de VLAN válido
+
+def random_fragment_size():
+    return random.randint(1, 1500)  # Tamaño de fragmento en bytes
+
+def random_hdr_length():
+    return random.randint(1, 60)  # Longitud del encabezado TCP
+
+def random_mac_address():
+    return ':'.join(f"{random.randint(0, 255):02x}" for _ in range(6))  # Dirección MAC aleatoria
+
+def random_attempts():
+    return random.randint(1, 10)  # Número de intentos
+
+def random_connection_id():
+    return random.randint(1000, 9999)  # ID de conexión
+
+def random_auth_server_group():
+    return random.choice(['LDAP', 'RADIUS', 'TACACS+', 'LOCAL'])  # Grupo de autenticación
+
+def random_duration():
+    return f"{random.randint(0, 23)}:{random.randint(0, 59):02}:{random.randint(0, 59):02}"  # Duración en formato HH:MM:SS
+
+def random_group_id():
+    return random.randint(1, 255)  # ID de grupo HSRP
+
+def random_bytes():
+    return random.randint(1, 1000000)  # Número de bytes aleatorio
+
+def random_pkt_length():
+    return random.randint(20, 1500)  # Longitud del paquete en bytes
+
+def random_fragment_offset():
+    return random.randint(0, 65535)  # Offset del fragmento
+
+def random_module():
+    return random.choice(['IPS', 'Firewall', 'VPN', 'Routing', 'Switching'])  # Módulo aleatorio
+
 # Clase para enviar logs
 class SyslogSender:
     def __init__(self, server, port, protocol='UDP'):
@@ -640,10 +907,42 @@ def validar_plantilla(template, data):
         return False
 
 if __name__ == '__main__':
-    # Combinar todas las plantillas de todas las marcas en una lista única
-    todas_las_plantillas = []
-    for marca in LOG_TEMPLATES.values():
-        todas_las_plantillas.extend(marca)
+    # Menú para seleccionar qué LOG_TEMPLATES usar
+    print("Selecciona qué plantillas de logs deseas utilizar:")
+    print("1. Fortinet")
+    print("2. Cisco")
+    print("3. Windows")
+    print("4. Palo Alto")
+    print("5. Linux")
+    print("6. MikroTik")
+    print("7. Huawei")
+    print("8. Todas las anteriores")
+
+    opcion = input("Introduce el número de tu elección: ").strip()
+
+    if opcion == "1":
+        seleccionadas = LOG_TEMPLATES['Fortinet']
+    elif opcion == "2":
+        seleccionadas = LOG_TEMPLATES['Cisco']
+    elif opcion == "3":
+        seleccionadas = LOG_TEMPLATES['Windows']
+    elif opcion == "4":
+        seleccionadas = LOG_TEMPLATES['Palo Alto']
+    elif opcion == "5":
+        seleccionadas = LOG_TEMPLATES['Linux']
+    elif opcion == "6":
+        seleccionadas = LOG_TEMPLATES['MikroTik']
+    elif opcion == "7":
+        seleccionadas = LOG_TEMPLATES['Huawei']
+    elif opcion == "8":
+        seleccionadas = []
+        for marca in LOG_TEMPLATES.values():
+            seleccionadas.extend(marca)
+    else:
+        print("[ERROR] Opción no válida. Usando todas las plantillas por defecto.")
+        seleccionadas = []
+        for marca in LOG_TEMPLATES.values():
+            seleccionadas.extend(marca)
 
     # Cantidad de logs como float
     try:
@@ -662,8 +961,8 @@ if __name__ == '__main__':
     print(f"Iniciando simulación: {total_int} logs aleatorios, intervalo {intervalo}s")
 
     for i in range(total_int):
-        # Seleccionar una plantilla aleatoria de todas las marcas
-        template = random.choice(todas_las_plantillas)
+        # Seleccionar una plantilla aleatoria de las seleccionadas
+        template = random.choice(seleccionadas)
         now = datetime.now()
         data = {
             'date': now.strftime('%Y-%m-%d'),
@@ -743,6 +1042,51 @@ if __name__ == '__main__':
             'session': random_session(),
             'rule': random_rule(),
             'object': random_object(),
+            'tunnel': random_tunnel(),
+            'used': random_used(),
+            'application': random.choice(['Web', 'Email', 'Database']),
+            'hostname': random_hostname(),
+            'vty': random_vty(),
+            'acl': random_acl(),
+            'packet_count': random_packet_count(),
+            'sig_id': random_sig_id(),
+            'subsig_id': random_subsig_id(),
+            'severity': random_severity(),
+            'description': random_description(),
+            'tcp_flags': random_tcp_flags(),
+            'access_group': random_access_group(),
+            'drop_rate': random_drop_rate(),
+            'burst_rate': random_burst_rate(),
+            'max_burst_rate': random_max_burst_rate(),
+            'avg_rate': random_avg_rate(),
+            'max_avg_rate': random_max_avg_rate(),
+            'total_count': random_total_count(),
+            'icmp_type': random_icmp_type(),
+            'icmp_code': random_icmp_code(),
+            'fragment_count': random_fragment_count(),
+            'fragment_id': random_fragment_id(),
+            'arp_type': random_arp_type(),
+            'src_mac': random_src_mac(),
+            'dst_mac': random_dst_mac(),
+            'method': random_method(),
+            'pc': random_pc(),
+            'call_stack': random_call_stack(),
+            'state': random_state(),
+            'limit': random_limit(),
+            'icmp_id': random_icmp_id(),
+            'vlan_id': random_vlan_id(),
+            'fragment_size': random_fragment_size(),
+            'hdr_length': random_hdr_length(),
+            'mac_address': random_mac_address(),
+            'attempts': random_attempts(),
+            'connection_id': random_connection_id(),
+            'auth_server_group': random_auth_server_group(),
+            'duration': random_duration(),
+            'group_id': random_group_id(),
+            'bytes': random_bytes(),
+            'pkt_length': random_pkt_length(),
+            'fragment_offset': random_fragment_offset(),
+            'module': random_module(),
         }
         if validar_plantilla(template, data):
             log = template.format(**data)
