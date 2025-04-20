@@ -225,6 +225,10 @@ El filtro "imagen" se puede utilizar en cualquier campo. Es igual que "es", pero
 		</ProcessCreate>
 		<ProcessCreate onmatch="include">
 			<IntegrityLevel condition="is">High</IntegrityLevel> <!-- Incluir procesos ejecutados como administrador -->
+			<Image condition="is">C:\Windows\System32\consent.exe</Image> <!-- Proceso relacionado con UAC -->
+			<Image condition="is">C:\Windows\System32\fodhelper.exe</Image> <!-- Utilizado en técnicas de UAC Bypass -->
+			<Image condition="is">C:\Windows\System32\eventvwr.exe</Image> <!-- Utilizado en técnicas de UAC Bypass -->
+			<Image condition="is">C:\Windows\System32\sdclt.exe</Image> <!-- Utilizado en técnicas de UAC Bypass -->
 		</ProcessCreate>
 	</RuleGroup>
 
@@ -449,6 +453,8 @@ El filtro "imagen" se puede utilizar en cualquier campo. Es igual que "es", pero
 		<CreateRemoteThread onmatch="include">
 			<TargetImage condition="is">C:\Windows\System32\lsass.exe</TargetImage> <!-- Registrar inyecciones en LSASS -->
 			<TargetImage condition="is">C:\Windows\System32\services.exe</TargetImage> <!-- Registrar inyecciones en servicios -->
+			<TargetImage condition="is">C:\Windows\System32\consent.exe</TargetImage> <!-- Inyecciones en procesos relacionados con UAC -->
+			<TargetImage condition="is">C:\Windows\System32\lsass.exe</TargetImage> <!-- Inyecciones en LSASS -->
 		</CreateRemoteThread>
 	</RuleGroup>
 
@@ -478,6 +484,7 @@ El filtro "imagen" se puede utilizar en cualquier campo. Es igual que "es", pero
 			<SourceImage condition="is">C:\Windows\System32\consent.exe</SourceImage> <!-- Registrar accesos relacionados con UAC -->
 			<SourceImage condition="end with">powershell.exe</SourceImage> <!-- Registrar accesos desde PowerShell -->
 			<SourceImage condition="end with">cmd.exe</SourceImage> <!-- Registrar accesos desde CMD -->
+			<TargetImage condition="is">C:\Windows\System32\lsass.exe</TargetImage> <!-- Accesos a LSASS -->
 		</ProcessAccess>
 	</RuleGroup>
 
@@ -736,6 +743,7 @@ El filtro "imagen" se puede utilizar en cualquier campo. Es igual que "es", pero
 			<Image name="Suspicious,ImageBeginWithBackslash" condition="begin with">\</Image> <!--Devices and VSC shouldn't be executing changes | Credit: @SBousseaden @ionstorm @neu5ron @PerchedSystems [ https://twitter.com/SwiftOnSecurity/status/1133167323991486464 ] -->
 			<TargetObject condition="contains">Policies\System\EnableLUA</TargetObject> <!-- Cambios en UAC -->
 			<TargetObject condition="contains">Policies\System\ConsentPromptBehaviorAdmin</TargetObject> <!-- Cambios en comportamiento de UAC -->
+			<TargetObject condition="contains">Policies\System\LocalAccountTokenFilterPolicy</TargetObject> <!-- Cambios en políticas de cuentas locales -->
 		</RegistryEvent>
 	</RuleGroup>
 
