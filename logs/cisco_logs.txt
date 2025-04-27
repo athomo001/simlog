@@ -1,0 +1,164 @@
+#Logs de configuración de Cisco IOS
+1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by {user} on vty{vty} ({src_ip})
+1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from {method} by {user} from {src_ip}
+%FTD-5-111008: User '{user}' executed the '{command}' command.
+%FTD-5-111010: User '{user}', running '{method}' from IP {src_ip}, executed 'crypto key generate rsa'
+1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from memory by console
+%ASA-5-111008: User '{user}' executed the command 'write memory'
+%ASA-5-111010: User '{admin_user}', running '{method}' from IP {src_ip}, executed 'no logging enable'
+1348: {hostname}: {date} {time}: %SYS-5-CONFIG_I: Configured from console by {user} on con0
+#Logs de IDS/IPS de Cisco IOS/FTD
+1348: {hostname}: {date} {time}: %IPS-4-SIGNATURE: Sig:{sig_id} Subsig:{subsig_id} Sev:{severity} "{attack_name}" [{src_ip}:{src_port} -> {dst_ip}:{dst_port}]
+%FTD-4-434004: SFR requested ASA to drop {protocol} flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} due to {ips_policy_name} policy, rule {ips_rule_name} sig_id: {sig_id} rev: {sig_rev}
+1348: {hostname}: {date} {time}: %IPS-4-SIGNATURE: Sig:{sig_id} Subsig:{subsig_id} Sev=high "ET EXPLOIT Apache Struts RCE ({cve_id})" [{src_ip}:{src_port} -> {dst_ip}:{dst_port}]
+%FTD-4-434002: SFR requested ASA to bypass further packet inspection for tcp flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} due to snort performance degradation
+1348: {hostname}: {date} {time}: %IPS-3-DISABLED: IPS sensor {sensor_id} disabled due to error: {error_message}
+%FTD-1-434001: SFR detection engine offline. Reason: {reason}. Please check SFR module status.
+1348: {hostname}: {date} {time}: %IPS-4-SIGNATURE: Sig:{sig_id} Subsig:{subsig_id} Sev=medium "ET SCAN Nmap OS Detection Probe" [{src_ip}:{src_port} -> {dst_ip}:{dst_port}]
+%FTD-4-434005: SFR requested ASA to reset {protocol} flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} due to {ips_policy_name} policy, rule {ips_rule_name} sig_id: {sig_id}
+#Logs de acceso denegado (IP Access List / Firewall)
+1348: {hostname}: {date} {time}: %SEC-6-IPACCESSLOGP: list {acl_name} denied tcp {src_ip}({src_port}) -> {dst_ip}({dst_port}), {packet_count} packet(s)
+%ASA-4-106023: Deny icmp src {interface}:{src_ip} dst {interface}:{dst_ip} by access-group "{access_group}" [0x0, 0x0]
+%FTD-3-710003: TCP access denied by ACL from {src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}
+1348: {hostname}: {date} {time}: %SEC-6-IPACCESSLOGDP: list {acl_name} denied udp {src_ip} -> {dst_ip} ({packet_count} packets) (Dest Port: {dst_port})
+%ASA-2-106001: Inbound TCP connection denied from {src_ip}/{src_port} to {dst_ip}/{dst_port} flags {tcp_flags} on interface {interface} due to policy
+%FTD-4-106023: Deny tcp src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port} by access-group "{access_group}"
+1348: {hostname}: {date} {time}: %SEC-6-IPACCESSLOGP: list {acl_name} denied icmp {src_ip} -> {dst_ip} (type {icmp_type}, code {icmp_code}), {packet_count} packet(s)
+%ASA-4-106023: Deny udp src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port} by access-group "{access_group}"
+#Logs de eventos de red
+1348: {hostname}: {date} {time}: %LINK-3-UPDOWN: Interface {interface}, changed state to up
+1348: {hostname}: {date} {time}: %LINK-3-UPDOWN: Interface {interface}, changed state to down
+%ASA-4-411001: Line protocol on Interface {interface} changed state to up
+%FTD-4-411001: Line protocol on Interface {interface} changed state to down
+1348: {hostname}: {date} {time}: %LINEPROTO-5-UPDOWN: Line protocol on Interface {interface}, changed state to up
+1348: {hostname}: {date} {time}: %LINEPROTO-5-UPDOWN: Line protocol on Interface {interface}, changed state to down
+%ASA-3-710005: TCP request discarded from {src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}
+%FTD-4-405001: Received ARP {arp_type} collision from {src_ip}/{src_mac} on interface {interface}
+#Logs de eventos de sistema
+1348: {hostname}: {date} {time}: %SYS-5-RESTART: System restarted -- Cisco IOS Software, {ios_version}
+%ASA-5-111004: Begin configuration: {user} reading from {source}
+%FTD-2-321006: System Memory usage reached {memory_usage}%
+1348: {hostname}: {date} {time}: %SYS-5-RELOAD: Reload requested by {user} on vty{vty}. Reload Reason: {reload_reason}.
+%ASA-1-105005: (Primary) Lost Failover communications with mate on interface {interface} ({failover_reason})
+%FTD-1-106101: The number of ACL log deny-flows has reached limit ({limit}). Check CPU/Memory.
+1348: {hostname}: {date} {time}: %SYS-6-LOGGINGHOST_STARTSTOP: Logging to host {syslog_server} port {syslog_port} stopped - CLI initiated
+%ASA-6-110002: Failed to locate egress interface for UDP from {src_ip}/{src_port} to {dst_ip}/{dst_port}
+#Logs de eventos de protocolos
+1348: {hostname}: {date} {time}: %BGP-5-ADJCHANGE: neighbor {neighbor_ip} Up
+1348: {hostname}: {date} {time}: %BGP-5-ADJCHANGE: neighbor {neighbor_ip} Down ({reason})
+1348: {hostname}: {date} {time}: %OSPF-5-ADJCHG: Process {process_id_ospf}, Nbr {neighbor_ip} on {interface} from {old_state} to {new_state}, {reason}
+1348: {hostname}: {date} {time}: %HSRP-5-STATECHANGE: {interface} Grp {group_id} state {old_state} -> {new_state} ({reason})
+%ASA-6-716002: Group {group_policy} User {user} IP {src_ip} Received non-routine Notify message: {notify_message} ({error_code}) error_text: {error_text}
+%FTD-3-713902: Group = {group_name}, IP = {src_ip}, QM FSM error (P2 struct &{address}). Received non-routine Notify message: {notify_message} ({error_code})
+1348: {hostname}: {date} {time}: %DUAL-5-NBRCHANGE: IP-EIGRP({as_num}): Neighbor {neighbor_ip} ({interface}) is down: peer termination received
+1348: {hostname}: {date} {time}: %NTP-6-PEERREACH: Peer {ntp_server} is reachable
+#Logs de eventos de VLAN y spanning tree
+1348: {hostname}: {date} {time}: %SPANTREE-2-BLOCK_PVID_PEER: Blocking {interface} on Vlan{vlan_id}. Inconsistent peer vlan.
+1348: {hostname}: {date} {time}: %SPANTREE-2-LOOPGUARD_BLOCK: Loop guard blocking port {interface} on Vlan{vlan_id}.
+1348: {hostname}: {date} {time}: %SPANTREE-5-ROOTGUARD_BLOCK: Root guard blocking port {interface} on Vlan{vlan_id}.
+1348: {hostname}: {date} {time}: %SPANTREE-5-TOPOLOGY_CHANGE: Topology Change detected for VLAN {vlan_id}
+1348: {hostname}: {date} {time}: %VTP-5-VLANCREATE: VLAN {vlan_id} created by {source}
+1348: {hostname}: {date} {time}: %VTP-5-VLANDELETE: VLAN {vlan_id} deleted by {source}
+1348: {hostname}: {date} {time}: %DTP-5-TRUNKPORTON: Port {interface} has become dot1q trunk
+1348: {hostname}: {date} {time}: %EC-5-L3DONTBNDL2: {interface} suspended: LACP currently not enabled on the remote port.
+Logs de eventos de DHCP y NTP
+1348: {hostname}: {date} {time}: %DHCPD-6-ADDRESS_ASSIGN: Interface {interface}: Assigned IP address {assigned_ip} to client {client_mac}.
+1348: {hostname}: {date} {time}: %DHCPD-4-PING_CONFLICT: Client {client_mac} address {assigned_ip} is already in use by {conflicting_mac}.
+1348: {hostname}: {date} {time}: %DHCPD-6-ADDRESS_RELEASE: Interface {interface}: Released IP address {assigned_ip} for client {client_mac} (reason: {release_reason}).
+1348: {hostname}: {date} {time}: %DHCP_SNOOPING-5-DHCP_SNOOPING_MATCH_MAC_FAIL: DHCP_SNOOPING drop message on port {port_num} reason: MAC mismatch
+1348: {hostname}: {date} {time}: %DHCP_SNOOPING-5-DHCP_SNOOPING_UNTRUSTED_PORT: DHCP_SNOOPING drop message on untrusted port {port_num}, message type: {dhcp_message_type}
+1348: {hostname}: {date} {time}: %NTP-5-SYNC: Clock is synchronized to peer {ntp_server} at stratum {stratum}
+1348: {hostname}: {date} {time}: %NTP-4-UNREACHABLE: Peer {ntp_server} is unreachable
+1348: {hostname}: {date} {time}: %NTP-6-PEERREACH: Peer {ntp_server} is reachable
+%ASA-6-725001: Starting NTP Request to server {ntp_server} interface {interface}
+%ASA-6-725002: Received NTP Response from server {ntp_server} interface {interface}
+#Logs de eventos de seguridad (General IOS/ASA)
+1348: {hostname}: {date} {time}: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: {user}] [Source: {src_ip}] [localport: {dst_port}] at {time_login}
+1348: {hostname}: {date} {time}: %SEC_LOGIN-4-LOGIN_FAILED: Login failed [user: {user}] [Source: {src_ip}] [localport: {dst_port}] at {time_login} reason: {login_fail_reason}
+1348: {hostname}: {date} {time}: %SYS-5-PORTSECURITY: Port-security violation occurred on port {interface}, Vlan {vlan_id}. MAC:{mac_address} Total:{violation_count}
+1348: {hostname}: {date} {time}: %AAA-3-ACCT_LOW_MEM: AAA accounting might fail due to low memory
+%ASA-6-611101: User authentication succeeded: Uname: {user} From: {src_ip} via {auth_method}
+%ASA-6-611102: User authentication failed: Uname: {user} From: {src_ip} Reason: {reason}
+%ASA-4-400014: IDS: {ids_engine} activation skipped. Activation key ({activation_key}) is invalid.
+%ASA-3-752006: Failed to establish SSH connection from {src_ip} because of {reason}.
+%ASA-4-507003: SSL session failed: SSL negotiation with {peer_type} at {peer_ip} failed due to {reason}
+%ASA-4-419001: Received fragmented packet with overlapping fragments from {src_ip} to {dst_ip}
+%ASA-4-419002: Received IPsec packet with invalid SPI {spi} from {src_ip} to {dst_ip}.
+%ASA-1-106021: Deny protocol {protocol} reverse path check from {src_ip} to {dst_ip} on interface {interface}
+%ASA-6-308001: console enable password incorrect for {attempts} tries (from {src_ip})
+1348: {hostname}: {date} {time}: %SSH-4-SSH2_UNEXPECTED_MSG: Unexpected message type {message_type} received from {src_ip} on port {src_port}
+1348: {hostname}: {date} {time}: %AAA-4-RADIUS_DEAD: RADIUS server {radius_server_ip}:{radius_port} is not responding.
+1348: {hostname}: {date} {time}: %SYS-4-ILLEGAL_ADDRESS: Illegal source address {src_ip} received on interface {interface} (MAC={mac_address})
+#Logs de Cisco FTD (Firepower Threat Defense)
+%FTD-3-710003: TCP access denied by ACL from {src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} rule_id({rule_id})
+%FTD-4-106023: Deny tcp src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port} by access-group "{access_group}" [0x{hit_count}, 0x0]
+%FTD-6-106015: Deny TCP (no connection) from {src_ip}/{src_port} to {dst_ip}/{dst_port} flags {tcp_flags} on interface {interface}
+%FTD-6-605004: Login denied from {src_ip}/{src_port} to {interface}:{dst_ip}/{protocol} for user "{user}" duration {duration}
+%FTD-6-605005: Login permitted from {src_ip}/{src_port} to {interface}:{dst_ip}/{protocol} for user "{user}" duration {duration}
+%FTD-4-733100: Threat Detection rate for {threat_type} exceeded. Current burst rate is {burst_rate} per second, max configured rate is {max_burst_rate}; Cumulative total count is {total_count}
+%FTD-3-421001: UDP flow from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} is dropped because application '{application}' inspection failed.
+%FTD-3-106014: Deny inbound icmp src {interface}:{src_ip} dst {interface}:{dst_ip} (type {icmp_type}, code {icmp_code})
+%FTD-4-500004: Invalid transport field for protocol={protocol}, from {src_ip}/{src_port} to {dst_ip}/{dst_port} (Could be scan/attack)
+%FTD-4-313009: Denied invalid ICMP error message code {icmp_code}, for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}, ICMP id {icmp_id}
+%FTD-4-209005: Discard IP fragment set with more than {fragment_count} elements: src = {src_ip}, dest = {dst_ip}, proto = {protocol}, id = {fragment_id}
+%FTD-6-305012: Teardown dynamic TCP translation from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes} flags {tcp_flags}
+%FTD-1-505015: Module {module}, application down "{application}", version "{version}" Error: {error_message}
+%FTD-6-302014: Teardown TCP connection {connection_id} for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes} reason: {teardown_reason}
+%FTD-6-302016: Teardown UDP connection {connection_id} for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes} reason: {teardown_reason}
+%FTD-2-106020: Deny IP teardrop fragment (size = {fragment_size}, offset = {fragment_offset}) from {src_ip} to {dst_ip}
+%FTD-5-500003: Bad TCP hdr length (hdrlen={hdr_length}, pktlen={pkt_length}) from {src_ip}/{src_port} to {dst_ip}/{dst_port}, flags: {tcp_flags}, on interface {interface}
+%FTD-3-202010: PAT pool {pool_name} exhausted. Unable to create TCP connection from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}
+%FTD-4-409023: Attempting AAA Fallback method {method} for Authentication request for user {user}: Auth-server group {auth_server_group} unreachable
+%FTD-4-711004: Task ran for {task_duration} msec, Process = {process}, PC = {pc}, Call stack = {call_stack} - High duration may indicate issue.
+%FTD-4-405003: IP address collision detected between host {src_ip} at {src_mac} and interface {interface}, {dst_mac}
+#Cisco ASA
+%ASA-4-106023: Deny tcp src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port} by access-group "{access_group}" [0x{hit_count}, 0x0]
+%ASA-6-302013: Built outbound TCP connection {connection_id} for {interface}:{dst_ip}/{dst_port} ({mapped_ip}/{mapped_port}) to {interface}:{src_ip}/{src_port} ({identity})
+%ASA-6-302014: Teardown TCP connection {connection_id} for {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port} duration {duration} bytes {bytes} reason: {teardown_reason}
+%ASA-3-710003: TCP access denied by ACL from {src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}
+%ASA-5-111008: User '{user}' executed the command '{command}'
+%ASA-6-611101: User authentication succeeded: Uname: {user} From: {src_ip} via {auth_method} server {auth_server_ip}
+%ASA-6-611102: User authentication failed: Uname: {user} From: {src_ip} Reason: {reason} server {auth_server_ip}
+%ASA-4-419001: Received fragmented packet with overlapping fragments from {src_ip} to {dst_ip}
+%ASA-1-106021: Deny protocol {protocol} reverse path check from {src_ip} to {dst_ip} on interface {interface}
+%ASA-4-733102: Threat Detection classified host {src_ip} as {threat_category}, reason: {reason}, stats: {statistics}
+%ASA-6-716001: Group {group_policy} User {user} IP {src_ip} Session started for user {user}
+%ASA-6-716003: Group {group_policy} User {user} IP {src_ip} Session terminated for user {user}. Reason: {reason} Duration: {duration} Bytes xmt: {bytes_xmt} Bytes rcv: {bytes_rcv}
+%ASA-4-113019: Group = {group_name}, Username = {user}, IP = {src_ip}, Session disconnected. Session Type: {session_type}, Duration: {duration}, Bytes xmt: {bytes_xmt}, Bytes rcv: {bytes_rcv}, Reason: {reason}
+%ASA-5-111004: Begin configuration: {user} reading from {source}
+%ASA-3-210005: LU allocate xlate failed for {protocol} src {interface}:{src_ip}/{src_port} dst {interface}:{dst_ip}/{dst_port}
+%ASA-4-402119: IPSec_Tunnel_Invalid_SPI: Received an invalid SPI {spi} on tunnel from {src_ip} to {dst_ip}.
+%ASA-6-305011: Built dynamic TCP translation from {interface}:{src_ip}/{src_port} to {interface}:{dst_ip}/{dst_port}
+#Cisco Catalyst 7000 Series (IOS/IOS-XE)
+%SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: {user}] [Source: {src_ip}] [localport: {dst_port}] on {line} at {time_login}
+%SEC_LOGIN-4-LOGIN_FAILED: Login failed [user: {user}] [Source: {src_ip}] [localport: {dst_port}] on {line} at {time_login}
+%SYS-5-CONFIG_I: Configured from {method} by {user} on {line} from {src_ip}
+%LINK-3-UPDOWN: Interface {interface}, changed state to down, reason: {reason}
+%LINEPROTO-5-UPDOWN: Line protocol on Interface {interface}, changed state to up
+%SPANTREE-2-BLOCK_PVID_PEER: Blocking {interface} on Vlan{vlan_id}. Inconsistent peer vlan.
+%SPANTREE-2-LOOPGUARD_BLOCK: Loop guard blocking port {interface} on Vlan{vlan_id}.
+%SYS-5-PORTSECURITY: Port-security violation occurred on port {interface}, Vlan {vlan_id}. MAC:{mac_address} Total:{violation_count} Action:{action}
+%DHCP_SNOOPING-5-DHCP_SNOOPING_UNTRUSTED_PORT: DHCP_SNOOPING drop message on untrusted port {port_num}, message type: {dhcp_message_type} from MAC {mac_address}
+%DAI-4-INVALID_ARP: 1 Invalid ARP packet received on {interface} in vlan {vlan_id}. ([{mac_address}/{src_ip} -> {dst_mac}/{dst_ip}])
+%OSPF-5-ADJCHG: Process {process_id_ospf}, Nbr {neighbor_ip} on {interface} from {old_state} to {new_state}, {reason}
+%BGP-5-ADJCHANGE: neighbor {neighbor_ip} Down - {reason}
+%NTP-5-SYNC: Clock is synchronized to peer {ntp_server} at stratum {stratum}
+%AAA-3-BAD_PASSWD_MAXFAIL: User {user} from {src_ip} exceeded maximum login failures on {line}
+%SYS-6-LOGGINGHOST_STARTSTOP: Logging to host {syslog_server} ({protocol}) port {syslog_port} started - CLI initiated
+%PLATFORM-3-ELEMENT_ERROR: Slot {slot_num} encountered error {error_code} on {component} ({error_description})
+%VTP-5-VLANCREATE: VLAN {vlan_id} created by {user} on {device_ip}
+#Cisco 8000 Series (IOS-XR)
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} sysmgr[100]: %OS-SYSMGR-3-ERROR : Failed to start process '{process_name}' (PID={pid_xr}), error: {error_code} ({error_description})
+LC/0/1/CPU0:{timestamp_xr} {hostname_xr} pfm_node_lc[290]: %PLATFORM-PFM-3-FAULT : Set|online_diagnostics_lc|module_failure|0/1/CPU0| Module failure on Line card 0/1/CPU0, Fault Reason: {fault_reason}
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} sshd[1234]: %SECURITY-SSHD-6-LOGIN_SUCCESS : Login Success: User '{user}' from '{src_ip}' on vty{vty_xr}
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} sshd[1235]: %SECURITY-SSHD-3-LOGIN_FAILED : Login Failed: User '{user}' from '{src_ip}' on vty{vty_xr} (Reason: {login_fail_reason})
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} ipv4_acl_edm[320]: %SECURITY-ACL-4-DENY : Packet denied by ACL '{acl_name_xr}', interface '{interface_xr}', packet detail: src={src_ip}/{src_port}, dst={dst_ip}/{dst_port}, protocol={protocol_num}, sequence={seq_num_xr}
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} bgp[110]: %ROUTING-BGP-5-ADJCHANGE : neighbor {neighbor_ip} Old state = {old_state} New state = {new_state} ({reason})
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} isis[140]: %ROUTING-ISIS-5-ADJCHANGE : Interface {interface_xr}, Adjacency to {neighbor_hostname} ({level}) changed state from {old_state} to {new_state}, reason: {reason}
+LC/0/0/CPU0:{timestamp_xr} {hostname_xr} eth_driver[160]: %PLATFORM-LINK-3-UPDOWN : Interface {interface_xr}, changed state to Down
+LC/0/3/CPU0:{timestamp_xr} {hostname_xr} eth_driver[160]: %PLATFORM-LINK-3-UPDOWN : Interface {interface_xr}, changed state to Up
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} syslog[101]: %MGBL-SYSLOG-6-CONFIG_I : Configuration changed by user '{user}' from '{src_ip}' (tty: {tty_xr}), client: {client_type}, correlation-id: {corr_id}
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} lpts_pa[350]: %SECURITY-LPTS-4-DROP_COUNT : Hardware policing drop count for '{flow_type}' packets exceeded threshold ({count} packets dropped)
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} tacacs[200]: %SECURITY-TACACS-3-SERVER_ERROR : TACACS+ server {tacacs_server_ip} responded with error: {tacacs_error}
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} ntp[180]: %MGBL-NTP-5-SYNC : NTP Clock is synchronized to server {ntp_server} (stratum {stratum})
+RP/0/RP0/CPU0:{timestamp_xr} {hostname_xr} envmon[210]: %PLATFORM-ENVMON-3-FANTRAY_FAILED : Fan tray {fan_tray_num} failed.

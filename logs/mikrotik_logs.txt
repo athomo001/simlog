@@ -1,0 +1,49 @@
+{bsd_timestamp} MikroTik: system,error,critical login failure for user {user} from {src_ip} via {login_method}
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), src-mac {src_mac}, proto TCP (SYN), {src_ip}:{src_port}->{dst_ip}:{dst_port}, len {length}, rule: drop_ssh_bruteforce (blocked by address list {address_list_name})
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto UDP, {src_ip}:{src_port}->{dst_ip}:53, len {length}, rule: drop_suspicious_dns (rejected)
+{bsd_timestamp} MikroTik: system,warning port scan detected from {src_ip} to {dst_ip}, protocol {protocol}, {port_count} ports scanned
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} added user {new_user} group={group_name} from {src_ip}
+{bsd_timestamp} MikroTik: system,error script {script_name} error: {error_message} (potential malicious script)
+{bsd_timestamp} MikroTik: interface,warning {interface} link down (flapping detected - potential DoS?)
+{bsd_timestamp} MikroTik: ip,warning arp: {mac_address} tried to use address {ip_address} which is already in use by {existing_mac_address} on {interface} (ARP spoof attempt?)
+{bsd_timestamp} MikroTik: system,error,critical login failure threshold crossed for user {user} from {src_ip} - possible brute force
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), proto ICMP ({icmp_type}:{icmp_code}), {src_ip}->{dst_ip}, len {length}, rule: drop_icmp_flood (rate limit exceeded)
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto TCP, {src_ip}:{src_port}->{dst_ip}:445, len {length}, rule: drop_external_smb (dropped)
+{bsd_timestamp} MikroTik: system,warning SYN flood detected on interface {interface}, attackers: {src_ip}({packet_rate}pps),... rate: {total_rate}pps
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} changed password for user {target_user} from {src_ip}
+{bsd_timestamp} MikroTik: system,error script {script_name} failed to execute: permission denied
+{bsd_timestamp} MikroTik: interface,warning ether1 excessive broadcasts/multicasts, probably loop detected on the bridge port
+{bsd_timestamp} MikroTik: ip,warning dhcp-server: {dhcp_server_name} offering lease {assigned_ip} for {mac_address} without request (rogue offer?)
+{bsd_timestamp} MikroTik: system,error,critical login failure for user {user} from {src_ip} via ssh - invalid public key
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), proto TCP (SYN,ACK), {src_ip}:{src_port}->{dst_ip}:{dst_port}, len {length}, rule: drop_invalid_tcp (invalid flags)
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto UDP, {src_ip}:{src_port}->{known_bad_ip}:{dst_port}, len {length}, rule: drop_known_bad_ips (dropped by address list {address_list_name})
+{bsd_timestamp} MikroTik: system,warning port scan detected from {src_ip} targeting port {dst_port} (UDP scan)
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} removed user {deleted_user} from {src_ip}
+{bsd_timestamp} MikroTik: system,error script {script_name} syntax error at line {line_num} col {col_num}
+{bsd_timestamp} MikroTik: interface,warning pppoe-client ({interface}) dialing failed: {fail_reason}
+{bsd_timestamp} MikroTik: ip,warning dhcp-client: {interface} received address {assigned_ip} from unexpected server {rogue_dhcp_server_ip}
+{bsd_timestamp} MikroTik: system,error,critical login failed too many times for user {user} from {src_ip} via webfig - account temporarily disabled
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), proto TCP (FIN,URG,PSH), {src_ip}:{src_port}->{dst_ip}:{dst_port}, len {length}, rule: drop_xmas_scan (dropped)
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto TCP, {src_ip}:{src_port}->{dst_ip}:3389, len {length}, rule: drop_external_rdp (dropped)
+{bsd_timestamp} MikroTik: system,warning UDP flood detected on interface {interface}, src: {src_ip}, rate: {packet_rate}pps
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} changed group for user {target_user} to {new_group_name} from {src_ip}
+{bsd_timestamp} MikroTik: system,error failed to update script {script_name}: {error_message}
+{bsd_timestamp} MikroTik: interface,warning {interface} link state changed (flapping: {flap_count} times in {flap_duration}s)
+{bsd_timestamp} MikroTik: ip,warning arp: conflict detected for {ip_address} on {interface} - {mac_address1} vs {mac_address2}
+{bsd_timestamp} MikroTik: system,error,critical login attempt for disabled user {disabled_user} from {src_ip} via api
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), proto TCP (NULL), {src_ip}:{src_port}->{dst_ip}:{dst_port}, len {length}, rule: drop_null_scan (dropped)
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto ICMP ({icmp_type}:{icmp_code}), {src_ip}->{dst_ip}, len {length}, rule: drop_unreachable_external (dropped)
+{bsd_timestamp} MikroTik: system,warning ICMP flood detected, src: {src_ip}, type: {icmp_type}, rate: {packet_rate}pps
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} logged in from {src_ip} via winbox
+{bsd_timestamp} MikroTik: system,error failed to schedule script {script_name}: {error_message}
+{bsd_timestamp} MikroTik: ppp,warning l2tp-client: authentication failed for user {user} ({fail_reason})
+{bsd_timestamp} MikroTik: ip,warning dhcp-server: {dhcp_server_name} pool {pool_name} is full, cannot assign address
+{bsd_timestamp} MikroTik: system,error,critical invalid username or password for user {user} from {src_ip} via {login_method} (repeated attempts)
+{bsd_timestamp} MikroTik: firewall,info input: in:{in_interface} out:(none), proto TCP, {src_ip}:{src_port}->{dst_ip}:{dst_port}, len {length}, rule: add_src_to_blacklist (dynamic address list add)
+{bsd_timestamp} MikroTik: firewall,info forward: in:{in_interface} out:{out_interface}, proto TCP, {src_ip}:{src_port}->{dst_ip}:23, len {length}, rule: drop_telnet (dropped)
+{bsd_timestamp} MikroTik: system,warning address list {address_list_name} entry added dynamically for {src_ip} due to rule {rule_name} trigger
+{bsd_timestamp} MikroTik: system,info,account user {admin_user} logged out from {src_ip} via ssh
+{bsd_timestamp} MikroTik: system,error configuration changed by script {script_name} resulted in error: {error_message}
+{bsd_timestamp} MikroTik: ipsec,error phase1 negotiation failed for peer {peer_ip} [{auth_method}]: {fail_reason}
+{bsd_timestamp} MikroTik: ip,warning dhcp-server: {dhcp_server_name} received DISCOVER from {mac_address} on wrong interface {interface} (possible rogue client?)
+{bsd_timestamp} MikroTik: system,error,critical kernel failure: {kernel_error_message} - possible attack causing instability

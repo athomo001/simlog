@@ -1,0 +1,11 @@
+2025-04-27 14:37:43 - INFO - Directorio de plantillas 'logs' creado.
+2025-04-27 14:37:43 - INFO - Simulador de logs iniciado.
+2025-04-27 14:39:58 - INFO - Simulador de logs iniciado.
+2025-04-27 14:40:02 - INFO - Intentando cargar plantillas para: Cisco
+2025-04-27 14:41:30 - INFO - Simulador de logs iniciado.
+2025-04-27 14:41:31 - INFO - Intentando cargar plantillas para: Cisco
+2025-04-27 14:42:52 - INFO - Simulador de logs iniciado.
+2025-04-27 14:42:54 - INFO - Intentando cargar plantillas para: Fortinet
+2025-04-27 14:44:23 - INFO - Simulador de logs iniciado.
+2025-04-27 14:44:25 - INFO - Intentando cargar plantillas para: Cisco
+2025-04-27 14:44:25 - ERROR - No se cargaron plantillas válidas. Terminando simulación.

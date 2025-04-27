@@ -311,6 +311,8 @@ def main():
 
     # 1. Mostrar menú y obtener selección
     tecnologias_seleccionadas = mostrar_nuevo_menu_seleccion()
+    server_port_str = 514 # Puerto por defecto para Syslog
+    protocolo =  'UDP' # Protocolo por defecto para Syslog
 
     if not tecnologias_seleccionadas:
         app_logger.log_info("No se seleccionaron tecnologías o el usuario salió. Terminando.")
@@ -343,23 +345,7 @@ def main():
         if server_ip: break
         print("[ERROR] La IP del servidor no puede estar vacía.")
 
-    while True:
-        server_port_str = input("Introduce el puerto del servidor Syslog (ej: 514): ").strip()
-        try:
-            server_port = int(server_port_str)
-            if 1 <= server_port <= 65535:
-                break
-            else:
-                print("[ERROR] Puerto fuera de rango (1-65535).")
-        except ValueError:
-            print(f"[ERROR] Puerto inválido: '{server_port_str}'. Debe ser un número.")
-
-    while True:
-        protocolo = input("Introduce el protocolo (UDP/TCP, defecto UDP): ").strip().upper() or 'UDP'
-        if protocolo in ['UDP', 'TCP']:
-            break
-        else:
-            print(f"[ERROR] Protocolo '{protocolo}' inválido. Usa UDP o TCP.")
+    
 
     while True:
         total_logs_str = input(f"¿Cuántos logs deseas enviar? (entero > 0, defecto 100): ").strip() or "100"

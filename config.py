@@ -16,6 +16,7 @@ LOG_FILES = {
     "SonicWall": "logs/sonicwall_logs.txt",
     "Sophos (X/Central)": "logs/sophosintercepx_logs.txt",
     "Sophos (XG Fw/UTM)": "logs/sophos_logs.txt",
+    "Squid Proxy": "logs/squidproxy_logs.txt",
     "F5 (BIG-IP LTM/ASM)": "logs/f5_logs.txt",
     "Aruba/HPE": "logs/aruba_logs.txt",
     "Check Point": "logs/checkpoint_logs.txt",

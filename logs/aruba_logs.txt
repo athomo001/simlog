@@ -1,0 +1,49 @@
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} disabled by port security. Mac-addr {mac_address}. Vlan {vlan_id}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} secured. Mac-addr {mac_address}. Vlan {vlan_id}. Action: {action}
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: Excessive login failures for user {user} from {src_ip}. Account locked.
+{bsd_timestamp} {hostname} hpe-security: ST4-SECURITY: Login failed for user {user} from {src_ip} via {method}. Reason: Invalid Password.
+{bsd_timestamp} {hostname} hpe-security: ST5-SECURITY: Authentication failed for MAC {mac_address} on port {port_num}. 802.1X Auth method: {auth_method}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Access control list {acl_name} denied {protocol} from {src_ip}:{src_port} to {dst_ip}:{dst_port} on Vlan {vlan_id}. Rule {rule_num}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: DHCP Snooping Dropped packet on port {port_num}. Vlan {vlan_id}. MAC: {mac_address}. IP: {src_ip}. Reason: {dhcp_snoop_reason}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Dynamic ARP Inspection Dropped packet on port {port_num}. Vlan {vlan_id}. MAC: {mac_address}. IP: {src_ip}. Reason: {arp_inspect_reason}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: Configuration changed by user {user} from {src_ip}. Command: {command_executed}.
+{bsd_timestamp} {hostname} hpe-stp: ST3-STP: Topology change detected for instance {instance_id} on port {port_num}. Potential Loop or Attack.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} disabled by loop-protect action on Vlan {vlan_id}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: RADIUS server {radius_server_ip} not responding for authentication requests. Failover possible.
+{bsd_timestamp} {hostname} hpe-security: ST4-SECURITY: TACACS+ server {tacacs_server_ip} authentication failed for user {user}. Reason: {reason}.
+{bsd_timestamp} {hostname} hpe-security: ST5-SECURITY: Port {port_num} received BPDU packet. BPDU-Protection enabled. Port disabled.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Access control list {acl_name} permitted {protocol} from {src_ip}:{src_port} to {dst_ip}:{dst_port} on Vlan {vlan_id}. Rule {rule_num}. (Logging permitted rule)
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: IP Source Guard Dropped packet on port {port_num}. Vlan {vlan_id}. MAC: {mac_address}. IP: {src_ip}. Reason: Invalid IP-MAC binding.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} violation occurred. Mac-addr {mac_address}. Vlan {vlan_id}. Shutdown timer started.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: User {user} logged in from {src_ip} via {method}. Privilege level: {privilege_level}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: User {user} logged out from {src_ip}. Session duration: {session_duration}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: DoS Attack detected: {dos_attack_type} from source {src_ip}. Action: {action}. Rate: {rate}. Threshold: {threshold}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} received packet with unknown source MAC address {mac_address}. Vlan {vlan_id}. Security action: {action}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: SSH session failed for user {user} from {src_ip}. Reason: {ssh_fail_reason}. Key fingerprint: {ssh_key_fp}.
+{bsd_timestamp} {hostname} hpe-security: ST4-SECURITY: Web UI login failed for user {user} from {src_ip}. Reason: Incorrect Password. Attempts: {attempts}.
+{bsd_timestamp} {hostname} hpe-security: ST5-SECURITY: MAC Authentication failed for device {mac_address} on port {port_num}. Vlan {vlan_id}. Profile: {profile_name}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: ACL {acl_name} ({acl_type}) modification by user {user}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: DHCP Snooping rate limit exceeded on port {port_num}. Rate: {rate}. Threshold: {threshold}. Port state: {port_state}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Dynamic ARP Inspection validation failed for ARP packet. SrcMAC:{mac_address}, SrcIP:{src_ip}, Port:{port_num}. Action: {action}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: Software update failed. Image: {image_name}. Reason: {update_fail_reason}.
+{bsd_timestamp} {hostname} hpe-stp: ST3-STP: BPDU Guard event on port {port_num}. Received BPDU, port disabled. Vlan {vlan_id}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} re-enabled after security violation timeout. Vlan {vlan_id}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: RADIUS accounting failed for user {user} session {session_id}. Server {radius_server_ip}. Reason: {reason}.
+{bsd_timestamp} {hostname} hpe-security: ST4-SECURITY: Local user account '{user}' password changed by administrator '{admin_user}'.
+{bsd_timestamp} {hostname} hpe-security: ST5-SECURITY: Root Guard inconsistency detected on port {port_num}. Received superior BPDU. Port moved to inconsistent state.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Access control list {acl_name} denied tcp from {src_ip}:{src_port} to {dst_ip}:445 on Vlan {vlan_id}. Rule {rule_num}. (Explicit SMB block log)
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: IP Source Guard violation - DHCP binding not found for IP {src_ip} MAC {mac_address} on port {port_num}. Vlan {vlan_id}. Packet dropped.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} security max MAC addresses limit ({limit}) reached. Vlan {vlan_id}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: System reboot initiated by user {user}. Reason: {reboot_reason}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: Configuration saved by user {user} to {config_destination}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: DoS Attack ended: {dos_attack_type} from source {src_ip}. Duration: {duration}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} received tagged frame on untagged Vlan {vlan_id}. Potential VLAN hopping. Dropped.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: SSH key authentication failed for user {user} from {src_ip}. Public key {ssh_key_type} {ssh_key_fp} not found or invalid.
+{bsd_timestamp} {hostname} hpe-security: ST4-SECURITY: Web UI session timeout for user {user} from {src_ip}. Session duration {session_duration}.
+{bsd_timestamp} {hostname} hpe-security: ST5-SECURITY: 802.1X supplicant {mac_address} on port {port_num} failed posture check. Policy: {clearpass_policy}. Status: Unhealthy. Action: Quarantine Vlan {quarantine_vlan}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Created user account '{new_user}' by administrator '{admin_user}'. Roles: {roles}.
+{bsd_timestamp} {hostname} hpe-security: ST3-SECURITY: DHCP Snooping received DHCP RELEASE from untrusted port {port_num}. Vlan {vlan_id}. MAC: {mac_address}. IP: {src_ip}. Ignored.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Dynamic ARP Inspection detected ARP reply rate limit exceeded on port {port_num}. Rate: {rate}. Threshold: {threshold}. Action: {action}.
+{bsd_timestamp} {hostname} hpe-system: ST4-SYSTEM: NTP synchronization lost with server {ntp_server}. Reason: {reason}.
+{bsd_timestamp} {hostname} hpe-stp: ST3-STP: Loop detected by loop-protect on port {port_num} in Vlan {vlan_id}. Loop detected count: {loop_count}.
+{bsd_timestamp} {hostname} hpe-security: ST1-ADM: Port {port_num} recovered from loop-protect disabled state. Vlan {vlan_id}.
