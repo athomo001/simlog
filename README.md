@@ -59,7 +59,7 @@ chmod +x simlog.py
 El script te guiará interactivamente para configurar el envío:
 
 ```
---------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------
 1   Cisco                         2   Fortinet                      3   Huawei                        4   Mikrotik
 5   Palo Alto                     6   WatchGuard                    7   SonicWall                     8   Sophos (X/Central)
 9   Sophos (XG Fw/UTM)            10  F5 (BIG-IP LTM/ASM)           11  Aruba/HPE                     12  Check Point
@@ -68,6 +68,7 @@ El script te guiará interactivamente para configurar el envío:
 21  Microsoft Defender            22  Auth Varios
 23  Todos
 --------------------------------------------------------------------------------------------------------
+----------------------------
 Ingrese opción/opciones y después ENTER (o 'q' para salir): 
 ```
 
@@ -98,6 +99,23 @@ Por favor, siéntete libre de abrir un *Issue* para discutir cambios o un *Pull 
 ## 📄 Licencia
 el ciclista sin licencia
 
+# Comentarios (modular)
+Ahora tienes la siguiente estructura de archivos:
+
+config.py: Contiene LOG_FILES.
+data_generators.py: Todas las funciones random_*.
+syslog_sender.py: La clase SyslogSender (corregida).
+utils.py: Funciones mostrar_progreso, validar_plantilla, cargar_plantillas.
+app_logger.py: El sistema de logging para la aplicación (corregido).
+main.py: El punto de entrada que une todo.
+Para ejecutar:
+
+Asegúrate de que todos estos archivos .py estén en el mismo directorio.
+Crea una subcarpeta llamada logs en ese mismo directorio.
+Coloca tus archivos de plantillas (ej., cisco_logs.txt, fortinet_logs.txt, etc.) dentro de la carpeta logs. Los nombres deben coincidir con los valores en el diccionario LOG_FILES en config.py.
+Ejecuta el simulador desde tu terminal usando: python main.py
+El simulador debería funcionar como antes, pero ahora el código está mucho más organizado y es más fácil de mantener. Además, tendrás un archivo simulator_activity.log que registrará lo que hace el simulador y cualquier error que ocurra.
+
 ---
-*README generado el domingo, 20 de abril de 2025.*
+*README generado el domingo, 27 de abril de 2025.*
 ```
