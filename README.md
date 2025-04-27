@@ -59,19 +59,16 @@ chmod +x simlog.py
 El script te guiará interactivamente para configurar el envío:
 
 ```
-Introduce la IP del servidor Syslog (Wazuh, QRadar, etc.): 192.168.1.100  # IP de tu recolector
-Selecciona qué plantillas de logs deseas utilizar:
-1. Fortinet
-2. Cisco
-3. Windows
-4. Palo Alto
-5. Linux
-6. MikroTik
-7. Huawei
-8. Todas las anteriores
-Introduce el número de tu elección: 8  # Elige una o todas
-¿Cuántos logs deseas enviar?: 10000  # Cantidad total de logs
-Intervalo entre logs (segundos, defecto 1): 0.1  # Tiempo entre cada log (0.1 = 10 EPS aprox.)
+--------------------------------------------------------------------------------------------------------
+1   Cisco                         2   Fortinet                      3   Huawei                        4   Mikrotik
+5   Palo Alto                     6   WatchGuard                    7   SonicWall                     8   Sophos (X/Central)
+9   Sophos (XG Fw/UTM)            10  F5 (BIG-IP LTM/ASM)           11  Aruba/HPE                     12  Check Point
+13  Carbon Black                  14  SentinelOne                   15  CrowdStrike Falcon            16  macOS
+17  Linux                         18  Windows                       19  Microsoft IIS                 20  Microsoft SQL Server
+21  Microsoft Defender            22  Auth Varios
+23  Todos
+--------------------------------------------------------------------------------------------------------
+Ingrese opción/opciones y después ENTER (o 'q' para salir): 
 ```
 
 El script comenzará a enviar los logs seleccionados al destino indicado. Puedes detenerlo con `Ctrl+C`.
