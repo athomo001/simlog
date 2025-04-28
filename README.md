@@ -1,6 +1,3 @@
-¡Excelente! 🚀 Aquí tienes el **README** aún más bonito, incluyendo **badges** para que se vea realmente profesional en GitHub:
-
-```markdown
 # 🪵 SimLog: Generador de Logs Syslog Simulados
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/athomo001/simlog)
@@ -65,7 +62,7 @@
 ```bash
 git clone https://github.com/athomo001/simlog.git
 cd simlog
-```
+
 
 2. Ejecuta el script principal:
 
@@ -78,7 +75,7 @@ Opcionalmente, puedes darle permisos de ejecución:
 ```bash
 chmod +x simlog.py
 ./simlog.py
-```
+
 
 3. Sigue las instrucciones interactivas en pantalla:
 
@@ -174,5 +171,3 @@ Puedes detener el envío en cualquier momento con `Ctrl+C`.
 
 _**README generado el domingo, 28 de abril de 2025.**_
 ```
-
----
