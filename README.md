@@ -6,11 +6,15 @@
 ![GitHub issues](https://img.shields.io/github/issues/athomo001/simlog)
 ![GitHub](https://img.shields.io/github/license/athomo001/simlog)
 ![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
-![Alpha](https://img.shields.io/badge/status-Alpha-orange)
 ![Python](https://img.shields.io/badge/python-3.x-blue)
 ![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Tools-yellow)
 ![SIEM](https://img.shields.io/badge/SIEM-Logs-green)
 ![Simulator](https://img.shields.io/badge/Simulator-Logs-red)
+![Wazuh](https://img.shields.io/badge/Wazuh-Integration-blue)
+![Splunk](https://img.shields.io/badge/Splunk-Integration-orange)
+![Log Collection](https://img.shields.io/badge/Log%20Collection-Enabled-blue)
+![QRadar](https://img.shields.io/badge/QRadar-Integration-blue)
+
 
 ---
 
