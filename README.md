@@ -1,10 +1,16 @@
 # 🪵 SimLog: Generador de Logs Syslog Simulados
 
+![Alpha](https://img.shields.io/badge/status-Alpha-orange)
 ![GitHub repo size](https://img.shields.io/github/repo-size/athomo001/simlog)
 ![GitHub last commit](https://img.shields.io/github/last-commit/athomo001/simlog)
 ![GitHub issues](https://img.shields.io/github/issues/athomo001/simlog)
 ![GitHub](https://img.shields.io/github/license/athomo001/simlog)
 ![Python Version](https://img.shields.io/badge/python-3.x-blue.svg)
+![Alpha](https://img.shields.io/badge/status-Alpha-orange)
+![Python](https://img.shields.io/badge/python-3.x-blue)
+![Cybersecurity](https://img.shields.io/badge/Cybersecurity-Tools-yellow)
+![SIEM](https://img.shields.io/badge/SIEM-Logs-green)
+![Simulator](https://img.shields.io/badge/Simulator-Logs-red)
 
 ---
 
