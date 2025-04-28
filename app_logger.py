@@ -106,4 +106,16 @@ def log_debug(message):
      """Registra un mensaje de depuración (puede que no vaya al archivo por defecto)."""
      logger.debug(message)
 
-# --- Fin del Módulo app_logger.py ---
+# --- Configuración adicional para placeholders no encontrados ---
+PLACEHOLDERS_LOG_FILENAME = 'placeholders_not_found.log'
+
+def log_placeholder_not_found(placeholder):
+    """
+    Registra un placeholder no encontrado en el archivo 'placeholders_not_found.log'.
+    Cada placeholder se guarda en una línea sin formato adicional.
+    """
+    try:
+        with open(PLACEHOLDERS_LOG_FILENAME, 'a', encoding='utf-8') as f:
+            f.write(f"{placeholder}\n")
+    except IOError as e:
+        logger.error(f"[ERROR] No se pudo escribir en el archivo '{PLACEHOLDERS_LOG_FILENAME}': {e}")

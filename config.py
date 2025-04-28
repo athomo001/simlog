@@ -29,5 +29,6 @@ LOG_FILES = {
     "Microsoft IIS": "logs/microsoftiss_logs.txt",
     "Microsoft SQL Server": "logs/microsoftsql_logs.txt",
     "Microsoft Defender": "logs/microsoftdefender_logs.txt",
+    "Rapid SCADA": "logs/rapidscada_logs.txt",
     "Auth Varios": "logs/authvarioswindows_logs.txt",
 }

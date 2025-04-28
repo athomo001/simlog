@@ -1,0 +1,50 @@
+{scada_timestamp} ScadaWeb [Error]: Login failed for user '{user_scada}'. Reason: Invalid password. (IP: {src_ip_scada}, Attempts: 3)
+{scada_timestamp} ScadaWeb [Critical]: Multiple login failures detected for user '{user_scada}'. Account locked. (IP: {src_ip_scada}, Attempts: 10)
+{scada_timestamp} ScadaAudit [Warning]: User '{admin_user_scada}' changed password for user '{target_user_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Info]: User '{user_scada}' sent command '{command_scada}' to CnlNum {cnl_num}, ObjNum {obj_num}. (IP: {src_ip_scada}, Value: {command_value})
+{scada_timestamp} ScadaAudit [Warning]: Unauthorized command attempt: User '{user_scada}' tried to send command '{command_scada}' to CnlNum {cnl_num}. (IP: {src_ip_scada}, Required Role: Administrator)
+{scada_timestamp} ScadaServer [Error]: Configuration load failed. File: {config_file_scada}. Reason: {error_reason_scada}.
+{scada_timestamp} ScadaComm [Error]: Line {line_num_scada}: Communication error with device {device_id_scada} ({device_ip_scada}). Status: Timeout. (Attempts: 5)
+{scada_timestamp} ScadaComm [Warning]: Line {line_num_scada}: Received invalid data from device {device_id_scada}. (Data: {invalid_data_hex})
+{scada_timestamp} ScadaWeb [Info]: User '{user_scada}' logged in successfully. (IP: {src_ip_scada}, SessionID: {session_id_scada})
+{scada_timestamp} ScadaWeb [Warning]: User '{user_scada}' logged in from unusual location. (IP: {src_ip_scada}, Location: {location_scada}, Usual IP: {usual_ip_scada})
+{scada_timestamp} ScadaAudit [Warning]: Configuration changed: User '{admin_user_scada}' modified Object {obj_num}, Property '{property_name}'. (IP: {src_ip_scada}, OldValue: {old_value}, NewValue: {new_value})
+{scada_timestamp} ScadaAudit [Info]: Event acknowledged by user '{user_scada}'. EventID: {event_id_scada}, Severity: Critical. (IP: {src_ip_scada})
+{scada_timestamp} ScadaServer [Info]: Service stopped by administrator request. (User: {admin_user_scada})
+{scada_timestamp} ScadaServer [Critical]: Service stopped unexpectedly. Reason: {service_stop_reason}. Attempting restart.
+{scada_timestamp} ScadaComm [Info]: Service started. (Version: {scada_version})
+{scada_timestamp} ScadaComm [Error]: Line {line_num_scada}: Device {device_id_scada} ({device_ip_scada}) reported exception code {exception_code}. (Function Code: {function_code})
+{scada_timestamp} ScadaWeb [Error]: Login failed for user '{user_scada}'. Reason: Account disabled. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Warning]: User '{admin_user_scada}' created new user '{new_user_scada}' with role '{role_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Info]: User '{admin_user_scada}' deleted user '{deleted_user_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaServer [Warning]: License check failed. Reason: {license_error}. Service may be degraded.
+{scada_timestamp} ScadaComm [Error]: Line {line_num_scada}: Communication channel initialization failed. Port: {comm_port}. Error: {error_reason_scada}.
+{scada_timestamp} ScadaWeb [Info]: User '{user_scada}' logged out. (IP: {src_ip_scada}, SessionID: {session_id_scada}, Duration: {session_duration_scada}s)
+{scada_timestamp} ScadaAudit [Warning]: Configuration changed: User '{admin_user_scada}' modified User '{target_user_scada}', Property 'RoleID'. (IP: {src_ip_scada}, OldValue: {old_role_id}, NewValue: {new_role_id})
+{scada_timestamp} ScadaAudit [Info]: Command sent successfully by user '{user_scada}' to CnlNum {cnl_num}. (IP: {src_ip_scada}, Value: {command_value})
+{scada_timestamp} ScadaServer [Error]: Database connection error. Connection string: {db_connection_string}. Error: {db_error}.
+{scada_timestamp} ScadaComm [Warning]: Line {line_num_scada}: High rate of communication errors for device {device_id_scada}. ({error_count} errors in last {time_window}s)
+{scada_timestamp} ScadaWeb [Error]: Invalid session ID detected for user '{user_scada}'. Session terminated. (IP: {src_ip_scada}, SessionID: {invalid_session_id})
+{scada_timestamp} ScadaAudit [Warning]: Configuration backup failed. Destination: {backup_path_scada}. Reason: {backup_error}.
+{scada_timestamp} ScadaAudit [Info]: Configuration backup successful. Destination: {backup_path_scada}. (User: {admin_user_scada})
+{scada_timestamp} ScadaServer [Warning]: Disk space low on logging partition. ({disk_free_percent}% free). Archiving may fail.
+{scada_timestamp} ScadaComm [Error]: Line {line_num_scada}: Device {device_id_scada} communication protocol mismatch detected. Expected: {expected_protocol}, Received: {received_protocol}.
+{scada_timestamp} ScadaWeb [Error]: Login failed for user '{user_scada}'. Reason: Invalid source IP address. (IP: {src_ip_scada}, Allowed IPs: {allowed_ips})
+{scada_timestamp} ScadaAudit [Warning]: User '{admin_user_scada}' disabled user account '{target_user_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Info]: User '{admin_user_scada}' enabled user account '{target_user_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaServer [Info]: Server started successfully. (Version: {scada_version}, Mode: Redundant/Standby)
+{scada_timestamp} ScadaComm [Warning]: Line {line_num_scada}: Device {device_id_scada} is offline. Last communication: {last_comm_time}.
+{scada_timestamp} ScadaWeb [Info]: User '{user_scada}' changed their password successfully. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Warning]: Configuration changed: User '{admin_user_scada}' modified Channel {channel_num}, Property 'CommLineNum'. (IP: {src_ip_scada}, OldValue: {old_value}, NewValue: {new_value})
+{scada_timestamp} ScadaAudit [Info]: System time synchronized with NTP server {ntp_server_scada}. Offset: {time_offset} ms.
+{scada_timestamp} ScadaServer [Error]: Failed to write archive file. File: {archive_file_path}. Reason: {archive_error}.
+{scada_timestamp} ScadaComm [Error]: Line {line_num_scada}: Serial port {comm_port} configuration error: {serial_error}.
+{scada_timestamp} ScadaWeb [Error]: Cross-Site Scripting attempt detected in URL parameter. (IP: {src_ip_scada}, User: {user_scada}, Parameter: {param_name}, Value: {xss_value})
+{scada_timestamp} ScadaAudit [Warning]: User '{admin_user_scada}' granted '{permission_scada}' permission to Role '{role_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Info]: User '{admin_user_scada}' revoked '{permission_scada}' permission from Role '{role_scada}'. (IP: {src_ip_scada})
+{scada_timestamp} ScadaServer [Warning]: High CPU utilization detected. ({cpu_util_percent}%). Performance may be impacted.
+{scada_timestamp} ScadaComm [Warning]: Line {line_num_scada}: Received unexpected data length from device {device_id_scada}. Expected: {expected_len}, Received: {received_len}.
+{scada_timestamp} ScadaWeb [Error]: SQL Injection attempt detected in input field. (IP: {src_ip_scada}, User: {user_scada}, Field: {field_name}, Value: {sqli_value})
+{scada_timestamp} ScadaAudit [Warning]: Configuration restore initiated by user '{admin_user_scada}'. File: {restore_file_path}. (IP: {src_ip_scada})
+{scada_timestamp} ScadaAudit [Info]: Configuration restore completed successfully. (User: {admin_user_scada})
+{scada_timestamp} ScadaServer [Critical]: Redundancy failover initiated. Reason: {failover_reason}. Switching to backup server.
