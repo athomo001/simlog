@@ -12,6 +12,7 @@ import time
 import os
 import math
 from datetime import datetime
+import ipaddress  # Importar el módulo para validar IPs
 
 # Importar los módulos propios
 import config
@@ -615,7 +616,7 @@ def generar_datos_para_log():
         'login_fail_reason': random.choice(['Invalid Password', 'Account Locked']),
         'enumerating_user': f"user-{random.randint(1, 100)}",
         'malware_svc_exe': f"malware-{random.randint(1, 100)}.exe",
-        'session_count': str(random.randint(1, 100)),
+        'session_count': str(random.randint(1, 1000)),
         'component': f"component-{random.randint(1, 100)}",
         'new_state': random.choice(['Active', 'Inactive']),
         'ssh_fail_reason': random.choice(['Key Mismatch', 'Timeout']),
@@ -1481,6 +1482,8 @@ def generar_datos_para_log():
         'owner_gid': str(random.randint(1000, 9999)),    # ID de grupo del propietario
         'logon_guid': f"guid-{random.randint(1000, 9999)}",  # GUID de inicio de sesión
         'aes256,aes128': f"{random.randint(1, 1000):032x}",
+        'aes256,aes128,': f"{random.randint(1, 1000):032x}",
+        ',aes256,aes128,': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio  # Valor hexadecimal aleatorio
         'logon_id_sysmon': f"logon-{random.randint(1000, 9999)}",  # ID de inicio de sesión para Sysmon
 
 
@@ -1531,10 +1534,12 @@ def main():
     # 3. Configurar parámetros de envío
     while True:
         server_ip = input("Introduce la IP del servidor Syslog (ej: 127.0.0.1): ").strip()
-        if server_ip: break
-        print("[ERROR] La IP del servidor no puede estar vacía.")
-
-    
+        try:
+            # Validar si la IP es válida
+            ipaddress.ip_address(server_ip)
+            break  # Salir del bucle si la IP es válida
+        except ValueError:
+            print(f"[ERROR] '{server_ip}' no es una dirección IP válida. Intenta de nuevo.")
 
     while True:
         total_logs_str = input(f"¿Cuántos logs deseas enviar? (entero > 0, defecto 100): ").strip() or "100"
