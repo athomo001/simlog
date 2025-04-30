@@ -1483,10 +1483,16 @@ def generar_datos_para_log():
         'logon_guid': f"guid-{random.randint(1000, 9999)}",  # GUID de inicio de sesión
         'aes256,aes128': f"{random.randint(1, 1000):032x}",
         'aes256,aes128,': f"{random.randint(1, 1000):032x}",
-        ',aes256,aes128,': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio  # Valor hexadecimal aleatorio
+        'aes256,aes128,': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio  # Valor hexadecimal aleatorio
         'logon_id_sysmon': f"logon-{random.randint(1000, 9999)}",  # ID de inicio de sesión para Sysmon
-
-
+        'terminal_session_id': f"session-{random.randint(1000, 9999)}",  # ID de sesión de terminal
+        'integrity_level': random.choice(['Low', 'Medium', 'High']),   # Nivel de integridad
+        'acl_blocked_ssh': 'Blocked SSH connection',    # Mensaje de bloqueo de SSH
+        'md5_sysmon ': f"{random.randint(1, 1000):032x}",  # Hash MD5 para Sysmon
+        'sha1_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA1 para Sysmon
+        'sha256_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA256 para Sysmon
+        'sha512_sysmon ': f"{random.randint(1, 1000):128x}",  # Hash SHA512 para Sysmon 
+        
     }
 
     # Asegurarse de que todos los valores sean strings para .format

@@ -10,7 +10,7 @@ from datetime import datetime
 
 # --- Configuración del Logger ---
 
-LOG_FILENAME = 'simulator_activity.log'
+LOG_FILENAME = 'logs_simlog/simlog.log'
 LOG_FORMAT = '%(asctime)s - %(levelname)s - %(message)s'
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
 
@@ -47,45 +47,14 @@ if not logger.hasHandlers():
 # --- Funciones de Logging Específicas ---
 
 def log_simulation_start(technologies, target_ip, target_port, protocol, total_logs, interval):
-    """Registra el inicio de una simulación."""
+    """Registra el inicio de una simulación con información clave."""
     tech_str = ", ".join(technologies) if technologies else "Ninguna"
-    msg = (f"Inicio de simulación: Tecnologías=[{tech_str}], Destino={target_ip}:{target_port} ({protocol}), "
-           f"Total Logs={total_logs}, Intervalo={interval}s")
+    start_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    msg = (f"[INICIO] Simulación iniciada a las {start_time}. "
+           f"Tecnologías: [{tech_str}], Destino: {target_ip}:{target_port} ({protocol}), "
+           f"Total Logs: {total_logs}, Intervalo: {interval}s")
     logger.info(msg)
-
-def log_template_load_warning(technology, filename, reason):
-    """Registra una advertencia durante la carga de plantillas."""
-    msg = f"Advertencia carga plantillas: Tecnología='{technology}', Archivo='{filename}', Razón='{reason}'"
-    logger.warning(msg)
-
-def log_template_load_error(technology, filename, error):
-    """Registra un error durante la carga de plantillas."""
-    msg = f"Error carga plantillas: Tecnología='{technology}', Archivo='{filename}', Error='{error}'"
-    logger.error(msg)
-
-def log_generation_error(template, data_keys, error):
-    """Registra un error al formatear una plantilla de log."""
-    template_preview = template[:100] + '...' if len(template) > 100 else template
-    msg = (f"Error generación log: Error='{error}', Plantilla='{template_preview}', "
-           f"Claves de datos disponibles={list(data_keys)}")
-    logger.error(msg)
-
-def log_send_error(target_info, error):
-    """Registra un error durante el envío de un log Syslog."""
-    msg = f"Error envío Syslog: Destino='{target_info}', Error='{error}'"
-    logger.error(msg)
-
-def log_connection_error(target_info, error):
-    """Registra un error al establecer la conexión inicial (ej. TCP)."""
-    msg = f"Error conexión Syslog: Destino='{target_info}', Error='{error}'"
-    logger.critical(msg) # Error crítico si no se puede conectar al inicio
-
-def log_simulation_end(logs_attempted, logs_sent_ok):
-    """Registra el final de una simulación."""
-    msg = (f"Fin de simulación: Logs intentados={logs_attempted}, "
-           f"Logs enviados OK (aprox.)={logs_sent_ok}")
-    logger.info(msg)
-
+    return start_time  # Devolver la hora de inicio para calcular la duración
 def log_info(message):
     """Registra un mensaje informativo general."""
     logger.info(message)
@@ -107,7 +76,7 @@ def log_debug(message):
      logger.debug(message)
 
 # --- Configuración adicional para placeholders no encontrados ---
-PLACEHOLDERS_LOG_FILENAME = 'placeholders_not_found.log'
+PLACEHOLDERS_LOG_FILENAME = 'logs_simlog/placeholders_not_found.log'
 
 def log_placeholder_not_found(placeholder):
     """
