@@ -1446,7 +1446,7 @@ def generar_datos_para_log():
         'sqli_value': f"sqli-{random.randint(1, 100)}",
         'restore_file_path': f"/path/to/restore-{random.randint(1, 100)}.bak",
         'failover_reason': random.choice(['Hardware Failure', 'Network Issue']),
-                'acl_detect_beacon': 'Detected beacon activity',
+        'acl_detect_beacon': 'Detected beacon activity',
         'blocked_user_agent': 'Blocked suspicious user agent',
         'acl_warn_executable': 'Warning: Executable detected',
         'mark': 'Important log marker',
@@ -1492,6 +1492,76 @@ def generar_datos_para_log():
         'sha1_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA1 para Sysmon
         'sha256_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA256 para Sysmon
         'sha512_sysmon ': f"{random.randint(1, 1000):128x}",  # Hash SHA512 para Sysmon 
+        # WatchGuard
+        'honeypot_file': f"honeypot-{random.randint(1, 100)}.txt",
+        'process_name': f"process-{random.randint(1, 100)}",
+
+        # SonicWall
+        'scan_tool': f"tool-{random.randint(1, 100)}",
+        'worm_name': f"worm-{random.randint(1, 100)}",
+        'keylog_variant': f"keylog-{random.randint(1, 100)}",
+        'backdoor_name': f"backdoor-{random.randint(1, 100)}",
+        'stealer_variant': f"stealer-{random.randint(1, 100)}",
+
+        # F5 Networks
+        'bot_name': f"bot-{random.randint(1, 100)}",
+        'csrf_token_status': random.choice(['Valid', 'Invalid']),
+        'reset_cause': random.choice(['Power Failure', 'Manual Reset']),
+        'traffic_group': f"group-{random.randint(1, 100)}",
+
+        # Check Point
+        'geo_location_origin': random.choice(['USA', 'Canada', 'Mexico']),
+        'geo_location_destination': random.choice(['USA', 'Canada', 'Mexico']),
+        'vpn_feature_name': f"vpn-feature-{random.randint(1, 100)}",
+        'vpn_community': f"community-{random.randint(1, 100)}",
+
+        # Aruba / HPE
+        'clearpass_policy': f"policy-{random.randint(1, 100)}",
+        'endpoint_status': random.choice(['Healthy', 'Quarantined']),
+        'quarantine_vlan': f"vlan-{random.randint(1, 100)}",
+
+        # macOS (BSM)
+        'malware_plist': f"malware-{random.randint(1, 100)}.plist",
+        'malicious_domain': f"malicious-{random.randint(1, 100)}.com",
+        'kernel_extension_path': f"/lib/modules/{random.randint(1, 100)}",
+
+        # Squid Proxy
+        'acl_warn_executable': 'Warning: Executable detected',
+        'acl_warn_connect_port': 'Warning: Connection to restricted port',
+        'acl_monitor_large_upload': 'Monitoring large file upload',
+
+        # Microsoft IIS
+        'backup_file_name': f"backup-{random.randint(1, 100)}.bak",
+        'webshell_name': f"webshell-{random.randint(1, 100)}.aspx",
+        'cmd_command': f"cmd-{random.randint(1, 100)}",
+
+        # Microsoft SQL Server
+        'new_owner': f"owner-{random.randint(1, 100)}",
+        'column_name': f"column-{random.randint(1, 100)}",
+
+        # CrowdStrike Falcon
+        'blocking_source': f"source-{random.randint(1, 100)}",
+        'script_file_name': f"script-{random.randint(1, 100)}.ps1",
+
+        # SentinelOne
+        'rollbackDuration': f"{random.randint(1, 3600)}s",
+        'malicious_domain': f"malicious-{random.randint(1, 100)}.com",
+
+        # Carbon Black
+        'powershell_encoded': f"encoded-{random.randint(1, 100)}",
+        'malware_debugger_path': f"/path/to/debugger-{random.randint(1, 100)}",
+
+        # Sophos Intercept X / Central
+        'script_content_snippet': 'print("Hello World")',
+        'script_sha256': f"{random.randint(1, 1000):064x}",
+
+        # Microsoft Defender for Endpoint
+        'command_persistence': f"command-{random.randint(1, 100)}",
+        'task_name': f"task-{random.randint(1, 100)}",
+
+        # Sistemas de Autenticación
+        'authenticationContext.mfaProvider': random.choice(['SMS', 'Email', 'App']),
+        'outcome.reason': random.choice(['Success', 'Failure']),
         
     }
 
