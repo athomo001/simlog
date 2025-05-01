@@ -30,5 +30,6 @@ LOG_FILES = {
     "Microsoft SQL Server": "logs/microsoftsql_logs.txt",
     "Microsoft Defender": "logs/microsoftdefender_logs.txt",
     "Rapid SCADA": "logs/rapidscada_logs.txt",
+    "Fuzzing-web/api": "logs/fuzzing_web.txt",
     "Auth Varios": "logs/authvarioswindows_logs.txt",
 }

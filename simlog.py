@@ -164,8 +164,7 @@ def generar_datos_para_log():
         'logid': data_generators.random_logid(),
         'pid': data_generators.random_process_id(),
         'message': random.choice(['Operation successful', 'Access denied', 'Configuration updated', 'Connection established', 'File downloaded', 'Scan complete', 'User logged out', 'Service started', 'Service stopped']),
-
-
+        
         # Información del dispositivo
         'device_name': 'Device-' + str(random.randint(1, 100)),
         'device_name_huawei': 'Huawei-' + str(random.randint(1, 100)),
@@ -184,7 +183,7 @@ def generar_datos_para_log():
         'panos_version': '10.' + str(random.randint(0, 5)),
         'firmware_version': 'v' + str(random.randint(1, 10)) + '.' + str(random.randint(0, 99)),
         'vlan_id': str(random.randint(1, 4096)),
-
+        
         # Información de red
         'source': f"10.0.{random.randint(0, 255)}.{random.randint(1, 254)}",
         'source_ip_sophos': f"172.16.{random.randint(0, 255)}.{random.randint(1, 254)}",
@@ -222,8 +221,7 @@ def generar_datos_para_log():
         'dns_servers': data_generators.random_dns_servers(),
         'session': data_generators.random_session(),
         'connection_id': data_generators.random_connection_id(),
-
-
+        
         # Sistema/Host
         'user': data_generators.random_user(),
         'admin': data_generators.random_admin(),
@@ -257,7 +255,7 @@ def generar_datos_para_log():
         'timezone': data_generators.random_timezone(),
         'event': data_generators.random_event(),
         'job_name': data_generators.random_job_name(),
-
+        
         # Información de logs y eventos
         'message_type': random.choice(['INFO', 'WARN', 'ERROR']),
         'event_id': str(random.randint(1000, 9999)),
@@ -270,7 +268,7 @@ def generar_datos_para_log():
         'audit_spec_name': 'Spec-' + str(random.randint(1, 50)),
         'max_connections': str(random.randint(1, 1000)),
         'task_duration': str(random.randint(1, 3600)) + 's',
-
+        
         # Seguridad
         'reason': random.choice(['Policy violation', 'Unauthorized access']),
         'threat_name_sophos': random.choice(['Trojan.Generic', 'Ransom.Cryptolocker', 'Exploit.Kit']),
@@ -308,7 +306,6 @@ def generar_datos_para_log():
         'description': data_generators.random_description(),
         'details': data_generators.random_details(),
         'severity_level': random.randint(1, 7), # Nivel numérico simple
-
         
         # Autenticación/Identidad
         'auth_result': data_generators.random_auth_result_detail(),
@@ -322,7 +319,7 @@ def generar_datos_para_log():
         'attempts': data_generators.random_attempts(),
         'duration': data_generators.random_duration(),
         'method': data_generators.random_method(),
-
+        
         # Web/HTTP
         'url': data_generators.random_url(),
         'domain': data_generators.random_domain(),
@@ -330,11 +327,11 @@ def generar_datos_para_log():
         'status_code': data_generators.random_http_status_code(),
         'status': data_generators.random_status(), # Alias (ej. "200 OK")
         'user_agent': data_generators.random_user_agent_string(),
-
+        
         # Windows Específico
         'registry_path': data_generators.random_registry_path(),
         'share_name': data_generators.random_share_name(),
-
+        
         # Cisco Específico
         'vty': data_generators.random_vty(),
         'pc': data_generators.random_pc(),
@@ -346,7 +343,7 @@ def generar_datos_para_log():
         'max_avg_rate': data_generators.random_max_avg_rate(),
         'total_count': data_generators.random_total_count(),
         'group_id': data_generators.random_group_id(),
-
+        
         # Placeholders Genéricos (si alguna plantilla usa algo no listado arriba)
         'value': data_generators.random_value(),
         'application': random.choice(['Web', 'Email', 'Database', 'CustomApp', 'NetworkShare', 'SystemProcess']),
@@ -355,7 +352,7 @@ def generar_datos_para_log():
         'type': data_generators.random_type(), # Renombrar a random_generic_type_code?
         'numeric_id': data_generators.random_numeric_id(),
         'placeholder': data_generators.random_placeholder(),
-
+        
         # Otros
         'admin_login': random.choice(['admin', 'root', 'user']),
         'login_name': random.choice(['user1', 'user2', 'admin']),
@@ -398,7 +395,7 @@ def generar_datos_para_log():
         'fragment_size': data_generators.random_fragment_size(),
         'hdr_length': data_generators.random_hdr_length(),
         'arp_type': data_generators.random_arp_type(),
-                'uid': str(random.randint(1000, 9999)),
+        'uid': str(random.randint(1000, 9999)),
         'agent_id': f"agent-{random.randint(1, 100)}",
         'dc_hostname': f"dc-{random.randint(1, 100)}",
         'bsd_timestamp': datetime.now().strftime('%b %d %H:%M:%S'),
@@ -1144,7 +1141,6 @@ def generar_datos_para_log():
         'remote_ip_s1': f"192.168.{random.randint(0, 255)}.{random.randint(1, 254)}",
         'dns_tunnel_query': f"query-{random.randint(1, 100)}",
         'pwd_ipa': f"password-{random.randint(1, 100)}",
-        'aes256': f"{random.randint(1, 1000):064x}",
         'aes256': 'Encrypted with AES256',
         'aes128': 'Encrypted with AES128',
         'AccountDomain': f"domain-{random.randint(1, 100)}.com",
@@ -1262,7 +1258,6 @@ def generar_datos_para_log():
         'asr_action': random.choice(['Blocked', 'Allowed']),
         'command_ipa': f"command-{random.randint(1, 100)}",
         'access_device_browser': f"browser-{random.randint(1, 100)}",
-        'aes256': f"{random.randint(1, 1000):064x}",
         'new_group_dn': f"CN=Group-{random.randint(1, 100)},OU=Groups,DC=example,DC=com",
         'auth_method_ldap': random.choice(['Password', 'Token', 'Biometric']),
         'sni_hostname': f"sni-{random.randint(1, 100)}.example.com",
@@ -1274,36 +1269,6 @@ def generar_datos_para_log():
         'dst_port_sysmon': str(random.randint(1024, 65535)),
         'attack_info': f"attack-{random.randint(1, 100)}",
         'company_name': f"Company-{random.randint(1, 100)}",
-        'aes256': f"{random.randint(1, 1000):064x}",
-        'exception_id': f"exception-{random.randint(1, 100)}",
-        'ioc_value': f"ioc-{random.randint(1, 100)}",
-        'parent_process_name_win': f"process-{random.randint(1, 100)}.exe",
-        'local_share_path': f"\\\\server\\share\\path-{random.randint(1, 100)}",
-        'rollback_duration': f"{random.randint(1, 3600)}s",
-        'technique_cb': f"technique-{random.randint(1, 100)}",
-        'key_fingerprint': f"fingerprint-{random.randint(1, 100)}",
-        'ttl': str(random.randint(1, 255)),
-        'tcontext': f"context-{random.randint(1, 100)}",
-        'sid_target_user': f"sid-{random.randint(1, 1000)}",
-        'source_thread_id': f"thread-{random.randint(1, 1000)}",
-        'signature': f"signature-{random.randint(1, 100)}",
-        'sid_removed_user': f"sid-{random.randint(1, 1000)}",
-        'sid_added_user': f"sid-{random.randint(1, 1000)}",
-        'engine': f"engine-{random.randint(1, 100)}",
-        'MitreTechniques': f"T{random.randint(1000, 1999)}",
-        'malware_type': random.choice(['Trojan', 'Ransomware', 'Spyware']),
-        'deleted_file_path': f"/path/to/deleted-{random.randint(1, 100)}.txt",
-        'Description': f"description-{random.randint(1, 100)}",
-        'sni_hostname': f"sni-{random.randint(1, 100)}.example.com",
-        'client_src_ip': f"192.168.{random.randint(0, 255)}.{random.randint(1, 254)}",
-        'egid_linux': str(random.randint(1000, 9999)),
-        'technique': f"technique-{random.randint(1, 100)}",
-        'file_hash_sha256_s1': f"{random.randint(1, 1000):064x}",
-        'start_address': f"0x{random.randint(1, 1000):x}",
-        'dst_port_sysmon': str(random.randint(1024, 65535)),
-        'attack_info': f"attack-{random.randint(1, 100)}",
-        'company_name': f"Company-{random.randint(1, 100)}",
-        'aes256': f"{random.randint(1, 1000):064x}",
         'exception_id': f"exception-{random.randint(1, 100)}",
         'ioc_value': f"ioc-{random.randint(1, 100)}",
         'parent_process_name_win': f"process-{random.randint(1, 100)}.exe",
@@ -1378,7 +1343,7 @@ def generar_datos_para_log():
         'udp_len': str(random.randint(1, 65535)),
         'command_line_sysmon': f"cmd-{random.randint(1, 100)}",
         'protocol_linux': random.choice(['TCP', 'UDP', 'ICMP']),
-
+        
         # ...Rapid SCADA...
         'scada_timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         'component_name': f"component-{random.randint(1, 100)}",
@@ -1436,7 +1401,6 @@ def generar_datos_para_log():
         'archive_file_path': f"/path/to/archive-{random.randint(1, 100)}.zip",
         'archive_error': f"error-{random.randint(1, 100)}",
         'serial_error': f"error-{random.randint(1, 100)}",
-        'param_name': f"param-{random.randint(1, 100)}",
         'xss_value': f"xss-{random.randint(1, 100)}",
         'permission_scada': random.choice(['Read', 'Write', 'Execute']),
         'cpu_util_percent': f"{random.randint(1, 100)}%",
@@ -1445,7 +1409,6 @@ def generar_datos_para_log():
         'field_name': f"field-{random.randint(1, 100)}",
         'sqli_value': f"sqli-{random.randint(1, 100)}",
         'restore_file_path': f"/path/to/restore-{random.randint(1, 100)}.bak",
-        'failover_reason': random.choice(['Hardware Failure', 'Network Issue']),
         'acl_detect_beacon': 'Detected beacon activity',
         'blocked_user_agent': 'Blocked suspicious user agent',
         'acl_warn_executable': 'Warning: Executable detected',
@@ -1453,8 +1416,6 @@ def generar_datos_para_log():
         'acl_warn_connect_port': 'Warning: Connection to restricted port',
         'current_directory': '/home/user/current',
         'acl_blocked_ip': '192.168.1.100',
-        'aes256': 'Encrypted with AES256',
-        'aes128': 'Encrypted with AES128',
         'acl_monitor_403': 'Monitoring HTTP 403 responses',
         'acl_monitor_ssh_tunnel': 'Monitoring SSH tunnel activity',
         'acl_blocked_phishing': 'Blocked phishing attempt',
@@ -1492,77 +1453,125 @@ def generar_datos_para_log():
         'sha1_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA1 para Sysmon
         'sha256_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA256 para Sysmon
         'sha512_sysmon ': f"{random.randint(1, 1000):128x}",  # Hash SHA512 para Sysmon 
-        # WatchGuard
+
         'honeypot_file': f"honeypot-{random.randint(1, 100)}.txt",
         'process_name': f"process-{random.randint(1, 100)}",
 
-        # SonicWall
-        'scan_tool': f"tool-{random.randint(1, 100)}",
-        'worm_name': f"worm-{random.randint(1, 100)}",
-        'keylog_variant': f"keylog-{random.randint(1, 100)}",
-        'backdoor_name': f"backdoor-{random.randint(1, 100)}",
-        'stealer_variant': f"stealer-{random.randint(1, 100)}",
-
-        # F5 Networks
-        'bot_name': f"bot-{random.randint(1, 100)}",
         'csrf_token_status': random.choice(['Valid', 'Invalid']),
-        'reset_cause': random.choice(['Power Failure', 'Manual Reset']),
-        'traffic_group': f"group-{random.randint(1, 100)}",
-
-        # Check Point
+ 
         'geo_location_origin': random.choice(['USA', 'Canada', 'Mexico']),
         'geo_location_destination': random.choice(['USA', 'Canada', 'Mexico']),
         'vpn_feature_name': f"vpn-feature-{random.randint(1, 100)}",
-        'vpn_community': f"community-{random.randint(1, 100)}",
-
-        # Aruba / HPE
-        'clearpass_policy': f"policy-{random.randint(1, 100)}",
         'endpoint_status': random.choice(['Healthy', 'Quarantined']),
-        'quarantine_vlan': f"vlan-{random.randint(1, 100)}",
-
-        # macOS (BSM)
-        'malware_plist': f"malware-{random.randint(1, 100)}.plist",
-        'malicious_domain': f"malicious-{random.randint(1, 100)}.com",
-        'kernel_extension_path': f"/lib/modules/{random.randint(1, 100)}",
-
-        # Squid Proxy
-        'acl_warn_executable': 'Warning: Executable detected',
-        'acl_warn_connect_port': 'Warning: Connection to restricted port',
-        'acl_monitor_large_upload': 'Monitoring large file upload',
-
-        # Microsoft IIS
+ 
         'backup_file_name': f"backup-{random.randint(1, 100)}.bak",
         'webshell_name': f"webshell-{random.randint(1, 100)}.aspx",
         'cmd_command': f"cmd-{random.randint(1, 100)}",
-
+        
         # Microsoft SQL Server
-        'new_owner': f"owner-{random.randint(1, 100)}",
         'column_name': f"column-{random.randint(1, 100)}",
-
+        
         # CrowdStrike Falcon
         'blocking_source': f"source-{random.randint(1, 100)}",
         'script_file_name': f"script-{random.randint(1, 100)}.ps1",
-
+        
         # SentinelOne
         'rollbackDuration': f"{random.randint(1, 3600)}s",
-        'malicious_domain': f"malicious-{random.randint(1, 100)}.com",
-
+        
         # Carbon Black
-        'powershell_encoded': f"encoded-{random.randint(1, 100)}",
-        'malware_debugger_path': f"/path/to/debugger-{random.randint(1, 100)}",
-
         # Sophos Intercept X / Central
-        'script_content_snippet': 'print("Hello World")',
         'script_sha256': f"{random.randint(1, 1000):064x}",
-
-        # Microsoft Defender for Endpoint
-        'command_persistence': f"command-{random.randint(1, 100)}",
-        'task_name': f"task-{random.randint(1, 100)}",
-
-        # Sistemas de Autenticación
+    
         'authenticationContext.mfaProvider': random.choice(['SMS', 'Email', 'App']),
         'outcome.reason': random.choice(['Success', 'Failure']),
-        
+       
+        #Fuzzing web API
+        'action': random.choice(['alert', 'block', 'deny']),
+        'action="alert_possible_takeover"': 'alert_possible_takeover',
+        'action="alert_security"': 'alert_security',
+        'action="block"': 'block',
+        'action="block_internal_ip"': 'block_internal_ip',
+        'action="deny"': 'deny',
+        'action="extraction_blocked"': 'extraction_blocked',
+        'action="rate_limit"': 'rate_limit',
+        'action="reject_incomplete"': 'reject_incomplete',
+        'action="scope_reduction"': 'scope_reduction',
+        'allowed_batch_size': str(random.randint(1, 100)),
+        'allowed_scope': 'read-only',
+        'api_gateway_hostname': f"api-gateway-{random.randint(1, 100)}.example.com",
+        'apigee[{pid_api}]': f"apigee[{random.randint(1000, 9999)}]",
+        'apache[{pid_web}]': f"apache[{random.randint(1000, 9999)}]",
+        'attack_type_api': random.choice(['SQL Injection', 'XSS', 'DDoS']),
+        'attack_type_web': random.choice(['Brute Force', 'CSRF', 'RCE']),
+        'auth_header': 'Basic dXNlcjpwYXNzd29yZA==',
+        'auth_pass': 'password123',
+        'auth_user': 'user123',
+        'client_id_api': f"client-{random.randint(1, 1000)}",
+        'comparison': 'equals',
+        'concurrent_requests': str(random.randint(1, 100)),
+        'decoded_payload': '{"key": "value"}',
+        'endpoint': '/api/v1/resource',
+        'error_pattern': '.*Error.*',
+        'expected_host_web': f"host-{random.randint(1, 100)}.example.com",
+        'failed_decrypt_attempts': str(random.randint(1, 10)),
+        'fields_detected': 'username,password',
+        'hash_compared_to': f"{random.randint(1, 1000):064x}",
+        'headers': '{"Content-Type": "application/json"}',
+        'host_header': '<script>alert(1)</script>.example.com',
+        'hostname': f"host-{random.randint(1, 100)}.example.com",
+        'http_header_soapaction': 'action-name',
+        'iis[{pid_web}]': f"iis[{random.randint(1000, 9999)}]",
+        'input_data': '{"input": "value"}',
+        'jndi:ldap://{malicious_ip}:1389/a': f"jndi:ldap://10.0.{random.randint(0, 255)}.{random.randint(1, 254)}:1389/a",
+        'kong[{pid_api}]': f"kong[{random.randint(1000, 9999)}]",
+        'mimetype': 'application/json',
+        'num_batched_queries': str(random.randint(1, 10)),
+        'nginx[{pid_web}]': f"nginx[{random.randint(1000, 9999)}]",
+        'origin_header': 'https://example.com',
+        'parameter_payload': '{"param": "value"}',
+        'password_placeholder': '********',
+        'payload': '{"key": "value"}',
+        'payload_contains': 'sensitive_data',
+        'php-fpm[{pid_web}]': f"php-fpm[{random.randint(1000, 9999)}]",
+        'pid_api': str(random.randint(1000, 9999)),
+        'pid_waf': str(random.randint(1000, 9999)),
+        'pid_web': str(random.randint(1000, 9999)),
+        'post_param_count': str(random.randint(1, 10)),
+        'processing_time': f"{random.uniform(0.1, 5.0):.2f}s",
+        'query': 'SELECT * FROM users',
+        'query_param': 'id=123',
+        'redirect_uri': 'https://example.com/callback',
+        'referer': 'https://example.com',
+        'reflected_in': 'response_body',
+        'requested_scope': 'read-write',
+        'requested_user_id': 'user123',
+        'request_body_action': '{"action": "update"}',
+        'request_uri_web': '/login',
+        'response_header': '{"Content-Type": "application/json"}',
+        'response_size': str(random.randint(100, 10000)),
+        'result': 'success',
+        'rule_id': str(random.randint(1, 1000)),
+        'saml_assertion_id': f"assertion-{random.randint(1, 1000)}",
+        'script_name_web': '/scripts/login.js',
+        'src_ip_web': f"192.168.{random.randint(0, 255)}.{random.randint(1, 254)}",
+        'state': random.choice(['active', 'inactive']),
+        'status': 'killed',
+        'status_code': str(random.randint(200, 599)),
+        'target_sp_api': 'service-provider',
+        'tomcat[{pid_web}]': f"tomcat[{random.randint(1000, 9999)}]",
+        'tyk[{pid_api}]': f"tyk[{random.randint(1000, 9999)}]",
+        'uri': '/api/resource',
+        'user_agent': 'Mozilla/5.0',
+        'user_agent_web': 'Mozilla/5.0',
+        'user_id': 'user123',
+        'user_input': 'input_value',
+        'username_api': 'api_user',
+        'value': 'example_value',
+        'viewstate_payload': 'viewstate_data',
+        'voucher_code': 'DISCOUNT2025',
+        'waf[{pid_waf}]': f"waf[{random.randint(1000, 9999)}]",
+        'web_server_hostname': f"web-server-{random.randint(1, 100)}.example.com",
+        'zip_entry_name': f"entry-{random.randint(1, 100)}.zip",       
     }
 
     # Asegurarse de que todos los valores sean strings para .format

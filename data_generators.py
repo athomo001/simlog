@@ -927,3 +927,186 @@ def random_numeric_id(digits=8):
     min_val = 10**(digits-1) if digits > 1 else 0
     max_val = (10**digits)-1
     return str(random.randint(min_val, max_val))
+def random_action():
+    """Genera una acción aleatoria."""
+    return random.choice([
+        "alert_possible_takeover", "alert_security", "block", "block_internal_ip",
+        "deny", "extraction_blocked", "rate_limit", "reject_incomplete", "scope_reduction"
+    ])
+
+def random_allowed_scope():
+    """Genera un alcance permitido aleatorio."""
+    return random.choice(["read-only", "read-write", "admin"])
+
+def random_api_gateway_hostname():
+    """Genera un nombre de host para un API Gateway."""
+    return f"api-gateway-{random.randint(1, 100)}.example.com"
+
+def random_attack_type():
+    """Genera un tipo de ataque aleatorio."""
+    return random.choice(["SQL Injection", "XSS", "DDoS", "Brute Force", "CSRF", "RCE"])
+
+def random_auth_header():
+    """Genera un encabezado de autenticación básico."""
+    return "Basic " + ''.join(random.choices(string.ascii_letters + string.digits, k=16))
+
+def random_auth_user():
+    """Genera un nombre de usuario de autenticación."""
+    return random.choice(["admin", "user", "guest", "test_user"])
+
+def random_auth_pass():
+    """Genera una contraseña aleatoria."""
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=12))
+
+def random_bsd_timestamp():
+    """Genera un timestamp estilo BSD."""
+    now = datetime.now() - timedelta(seconds=random.randint(0, 3600))
+    return now.strftime('%b %d %H:%M:%S').replace(' 0', '  ')
+
+def random_client_id_api():
+    """Genera un ID de cliente para una API."""
+    return f"client-{random.randint(1, 1000)}"
+
+def random_comparison():
+    """Genera un operador de comparación."""
+    return random.choice(["equals", "not_equals", "contains", "starts_with", "ends_with"])
+
+def random_concurrent_requests():
+    """Genera un número aleatorio de solicitudes concurrentes."""
+    return random.randint(1, 100)
+
+def random_decoded_payload():
+    """Genera un payload decodificado."""
+    return '{"key": "value"}'
+
+def random_endpoint():
+    """Genera un endpoint de API."""
+    return f"/api/v1/resource/{random.randint(1, 100)}"
+
+def random_error_pattern():
+    """Genera un patrón de error."""
+    return ".*Error.*"
+
+def random_expected_host_web():
+    """Genera un nombre de host esperado para la web."""
+    return f"host-{random.randint(1, 100)}.example.com"
+
+def random_failed_decrypt_attempts():
+    """Genera un número aleatorio de intentos fallidos de descifrado."""
+    return random.randint(1, 10)
+
+def random_fields_detected():
+    """Genera una lista de campos detectados."""
+    return random.choice(["username,password", "email,phone", "id,name"])
+
+def random_hash_compared_to():
+    """Genera un hash para comparación."""
+    return ''.join(random.choices(string.hexdigits.lower(), k=64))
+
+def random_headers():
+    """Genera un encabezado HTTP."""
+    return '{"Content-Type": "application/json"}'
+
+def random_http_header_soapaction():
+    """Genera un encabezado HTTP SOAPAction."""
+    return "action-name"
+
+def random_input_data():
+    """Genera datos de entrada."""
+    return '{"input": "value"}'
+
+def random_jndi_payload():
+    """Genera un payload JNDI malicioso."""
+    return f"jndi:ldap://{random_ip(type='external')}:1389/a"
+
+def random_origin_header():
+    """Genera un encabezado de origen."""
+    return "https://example.com"
+
+def random_parameter_payload():
+    """Genera un payload de parámetro."""
+    return '{"param": "value"}'
+
+def random_password_placeholder():
+    """Genera un marcador de posición para contraseñas."""
+    return "********"
+
+def random_payload():
+    """Genera un payload genérico."""
+    return '{"key": "value"}'
+
+def random_payload_contains():
+    """Genera un contenido de payload."""
+    return "sensitive_data"
+
+def random_post_param_count():
+    """Genera un número aleatorio de parámetros POST."""
+    return random.randint(1, 10)
+
+def random_processing_time():
+    """Genera un tiempo de procesamiento aleatorio."""
+    return f"{random.uniform(0.1, 5.0):.2f}s"
+
+def random_redirect_uri():
+    """Genera un URI de redirección."""
+    return "https://example.com/callback"
+
+def random_response_header():
+    """Genera un encabezado de respuesta."""
+    return '{"Content-Type": "application/json"}'
+
+def random_response_size():
+    """Genera un tamaño de respuesta aleatorio."""
+    return random.randint(100, 10000)
+
+def random_result():
+    """Genera un resultado genérico."""
+    return random.choice(["success", "failure", "pending"])
+
+def random_rule_id():
+    """Genera un ID de regla."""
+    return random.randint(1, 1000)
+
+def random_saml_assertion_id():
+    """Genera un ID de aserción SAML."""
+    return f"assertion-{random.randint(1, 1000)}"
+
+def random_script_name_web():
+    """Genera un nombre de script web."""
+    return f"/scripts/script-{random.randint(1, 100)}.js"
+
+def random_signature_status():
+    """Genera un estado de firma."""
+    return random.choice(["Valid", "Invalid"])
+
+def random_state():
+    """Genera un estado genérico."""
+    return random.choice(["active", "inactive", "pending"])
+
+def random_target_sp_api():
+    """Genera un nombre de proveedor de servicios objetivo."""
+    return "service-provider"
+
+def random_uri():
+    """Genera un URI genérico."""
+    return f"/api/resource/{random.randint(1, 100)}"
+
+def random_user_agent():
+    """Genera un User-Agent genérico."""
+    return "Mozilla/5.0"
+
+def random_username_api():
+    """Genera un nombre de usuario para API."""
+    return f"api_user_{random.randint(1, 100)}"
+
+def random_viewstate_payload():
+    """Genera un payload de ViewState."""
+    return "viewstate_data"
+
+def random_voucher_code():
+    """Genera un código de voucher."""
+    return f"DISCOUNT-{random.randint(1000, 9999)}"
+
+def random_zip_entry_name():
+    """Genera un nombre de entrada ZIP."""
+    return f"entry-{random.randint(1, 100)}.zip"
