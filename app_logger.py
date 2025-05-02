@@ -55,6 +55,10 @@ def log_simulation_start(technologies, target_ip, target_port, protocol, total_l
            f"Total Logs: {total_logs}, Intervalo: {interval}s")
     logger.info(msg)
     return start_time  # Devolver la hora de inicio para calcular la duración
+
+def log_simulation_end(logs_attempted, logs_sent_ok):
+    log_info(f"Simulación terminada. Logs intentados: {logs_attempted}, Logs enviados: {logs_sent_ok}")
+
 def log_info(message):
     """Registra un mensaje informativo general."""
     logger.info(message)
@@ -75,6 +79,9 @@ def log_debug(message):
      """Registra un mensaje de depuración (puede que no vaya al archivo por defecto)."""
      logger.debug(message)
 
+def log_generation_error(template, keys, error_msg):
+    log_error(f"Error generando log. Plantilla: {template[:100]}..., Claves disponibles: {list(keys)}, Error: {error_msg}")
+
 # --- Configuración adicional para placeholders no encontrados ---
 PLACEHOLDERS_LOG_FILENAME = 'logs_simlog/placeholders_not_found.log'
 
@@ -88,3 +95,10 @@ def log_placeholder_not_found(placeholder):
             f.write(f"{placeholder}\n")
     except IOError as e:
         logger.error(f"[ERROR] No se pudo escribir en el archivo '{PLACEHOLDERS_LOG_FILENAME}': {e}")
+
+# Ejemplo de uso de log_critical con exc_info
+try:
+    # Simulación de un error crítico
+    raise ValueError("Simulación de un error crítico")
+except Exception as e:
+    log_critical(f"Error crítico durante el bucle de envío: {e}")

