@@ -32,4 +32,5 @@ LOG_FILES = {
     "Rapid SCADA": "logs/rapidscada_logs.txt",
     "Fuzzing-web/api": "logs/fuzzing_web.txt",
     "Auth Varios": "logs/authvarioswindows_logs.txt",
+    "Zabbix-Grafana-PRTG": "logs/zabbix_grafana_prtg_logs.txt",
 }

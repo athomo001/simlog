@@ -1,0 +1,60 @@
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Swap Usage: Total: {swap_total_gb}GB, Used: {swap_used_gb}GB. Status: {health_status_swap}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Active Processes: {active_processes}. Status: {health_status_proc}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Cache Usage: {cache_usage_percent}% of capacity. Status: {health_status_cache}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Network Connections: {network_connections} established. Status: {health_status_net}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk I/O: {io_activity_status}. Status: {health_status_io}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Filesystem Inodes: {disk_partition_inodes}: {inodes_used_percent}% used. Status: {health_status_inodes}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Uptime: {uptime_days} days. Status: {health_status_uptime}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: System Clock Sync: {ntp_sync_status}. Status: {health_status_ntp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Service Status: {service_name_1} {service_status_1}. Status: {health_status_service_1}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Swap Usage: Total: {swap_total_gb}GB, Used: {swap_used_gb}GB. Status: {health_status_swap}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Active Processes: {active_processes}. Status: {health_status_proc}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Cache Usage: {cache_usage_percent}% of capacity. Status: {health_status_cache}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Network Connections: {network_connections} established. Status: {health_status_net}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk I/O: {io_activity_status}. Status: {health_status_io}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Filesystem Inodes: {disk_partition_inodes}: {inodes_used_percent}% used. Status: {health_status_inodes}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Uptime: {uptime_days} days. Status: {health_status_uptime}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: System Clock Sync: {ntp_sync_status}. Status: {health_status_ntp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Service Status: {service_name_2} {service_status_2}. Status: {health_status_service_2}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Swap Usage: Total: {swap_total_gb}GB, Used: {swap_used_gb}GB. Status: {health_status_swap}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Active Processes: {active_processes}. Status: {health_status_proc}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Cache Usage: {cache_usage_percent}% of capacity. Status: {health_status_cache}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Network Connections: {network_connections} established. Status: {health_status_net}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk I/O: {io_activity_status}. Status: {health_status_io}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Filesystem Inodes: {disk_partition_inodes}: {inodes_used_percent}% used. Status: {health_status_inodes}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Uptime: {uptime_days} days. Status: {health_status_uptime}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: System Clock Sync: {ntp_sync_status}. Status: {health_status_ntp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Service Status: {service_name_1} {service_status_1}. Status: {health_status_service_1}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Swap Usage: Total: {swap_total_gb}GB, Used: {swap_used_gb}GB. Status: {health_status_swap}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Active Processes: {active_processes}. Status: {health_status_proc}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Cache Usage: {cache_usage_percent}% of capacity. Status: {health_status_cache}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Network Connections: {network_connections} established. Status: {health_status_net}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk I/O: {io_activity_status}. Status: {health_status_io}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Filesystem Inodes: {disk_partition_inodes}: {inodes_used_percent}% used. Status: {health_status_inodes}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Uptime: {uptime_days} days. Status: {health_status_uptime}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: System Clock Sync: {ntp_sync_status}. Status: {health_status_ntp}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Service Status: {service_name_2} {service_status_2}. Status: {health_status_service_2}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Disk Usage: {disk_partition}: {disk_usage_percent}% full. Status: {health_status_disk}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: CPU Load: 1-min: {cpu_load_1min}, 5-min: {cpu_load_5min}, 15-min: {cpu_load_15min}. Status: {health_status_cpu}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: RAM Usage: Total: {ram_total_gb}GB, Used: {ram_used_gb}GB, Free: {ram_free_gb}GB. Status: {health_status_ram}.
+{log_month} {log_day} {log_time} server-prod kernel: [ {kernel_timestamp}] HealthCheck: Temperature: CPU: {cpu_temp_c}C, System: {sys_temp_c}C. Status: {health_status_temp}.
