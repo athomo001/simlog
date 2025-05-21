@@ -14,7 +14,9 @@
 ![Splunk](https://img.shields.io/badge/Splunk-Integration-orange)
 ![Log Collection](https://img.shields.io/badge/Log%20Collection-Enabled-blue)
 ![QRadar](https://img.shields.io/badge/QRadar-Integration-blue)
-
+![Zabbix](https://img.shields.io/badge/Zabbix-Integration-blue)
+![Grafana](https://img.shields.io/badge/Grafana-Integration-orange)
+![PRTG](https://img.shields.io/badge/PRTG-Integration-yellow)
 
 ---
 
@@ -92,15 +94,15 @@ chmod +x simlog.py
 ```plaintext
 Selecciona las marcas de logs que deseas utilizar:
 Ingresa los números separados por comas (ej: 1,3,5) o el número para 'Todos'.
-------------------------------------------------------------------------------------------------------------------------
-1   Cisco               2   Fortinet            3   Huawei            4   Mikrotik
-5   Palo Alto           6   WatchGuard          7   SonicWall         8   Sophos (X/Central)
-9   Sophos (XG Fw/UTM) 10   Squid Proxy        11   F5 (BIG-IP)       12   Aruba/HPE
-13  Check Point        14   Carbon Black       15   SentinelOne      16   CrowdStrike
-17  macOS              18   Linux              19  Windows           20   Microsoft IIS
-21  SQL Server         22   Defender           23  Rapid SCADA       24  Auth Varios
-25  Todos
-------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1   Cisco                          2   Fortinet                       3   Huawei                         4   Mikrotik                       5   Palo Alto
+6   WatchGuard                     7   SonicWall                      8   Sophos (X/Central)             9   Sophos (XG Fw/UTM)             10  Squid Proxy
+11  F5 (BIG-IP LTM/ASM)            12  Aruba/HPE                      13  Check Point                    14  Carbon Black                   15  SentinelOne
+16  CrowdStrike Falcon             17  macOS                          18  Linux                          19  Windows                        20  Microsoft IIS
+21  Microsoft SQL Server           22  Microsoft Defender             23  Rapid SCADA                    24  Fuzzing-web/api                25  Auth Varios
+26  Zabbix-Grafana-PRTG
+27  Todos
+------------
 Ingrese opción/opciones y después ENTER (o 'q' para salir): 25
 Seleccionando todas las tecnologías.
 
@@ -154,6 +156,7 @@ Puedes detener el envío en cualquier momento con `Ctrl+C`.
 - Microsoft Defender
 - Rapid SCADA
 - Auth Varios
+- Zabbix - grafana - PRTG
 - **Todos**
 
 ---
